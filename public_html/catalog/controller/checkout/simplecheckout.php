@@ -1326,7 +1326,47 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
         }        
     
 	print_r('PAPA IGOR');
-	return $order_id;
+	$products_list = array(
+    0 => array(
+            'product_id' => 217,    //код товара (из каталога CRM)
+            'price'      => 300, //цена товара 1
+            'count'      => '1',                     //количество товара 1
+            // если есть смежные товары, тогда количество общего товара игнорируется
+    )
+);
+$products = urlencode(serialize($products_list));
+$sender = urlencode(serialize($_SERVER));
+// параметры запроса
+$data_for_request = array(
+    'key'             => 'e644ceaaf3a323cd8fccf2f3c476a945', //Ваш секретный токен
+    'country'         => 'UA',                         // Географическое направление заказа
+    'office'          => '1',                          // Офис (id в CRM)
+    'products'        => $products,                    // массив с товарами в заказе
+    'bayer_name'      => '',  // покупатель (Ф.И.О)
+    'phone'           => '',  // телефон
+    'email'           => '',  // электронка
+    'comment'         => '',  // комментарий
+    'delivery'        => '',  // способ доставки (id в CRM)
+    'delivery_adress' => '',  // адрес доставки
+    'payment'         => '',  // вариант оплаты (id в CRM)
+    'sender'          => $sender,
+    'utm_source'      => '',  // utm_source
+    'utm_medium'      => '',  // utm_medium
+    'utm_term'        => '',  // utm_term
+    'utm_content'     => '',  // utm_content
+    'utm_campaign'    => '',  // utm_campaign
+);
+
+// запрос
+$curl = curl_init();
+// curl_setopt($curl, CURLOPT_URL, 'https://bilioscrm.com.ua/engine/api/addorder.php');
+curl_setopt($curl, CURLOPT_URL, 'https://webhook.site/b9660e15-6702-4bce-8eb7-b1131acc42dd');
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
+$out = curl_exec($curl);
+curl_close($curl);
+    	return $order_id;
     }
 
     private function confirm() {
