@@ -1324,17 +1324,8 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
             $this->load->model('tool/simpleapi');
             $this->model_tool_simpleapi->deleteAbandonedCart($simple_cart_id);
         }        
-	$url = "https://webhook.site/d930a048-bc12-42ac-861f-a544bc56135c";
     
-     $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_POST, true);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-    $out = curl_exec($curl);
-    curl_close($curl);
-    
-	print_r($data);
+	print_r('PAPA IGOR');
 	return $order_id;
     }
 
