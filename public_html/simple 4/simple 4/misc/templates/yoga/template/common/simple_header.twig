@@ -1,0 +1,20 @@
+{{ header }}
+<div class="section section_white checkout" id="checkout-cart">
+  <div class="g-wrapper">
+    <div class="block block_small">
+        <ul class="g-breadcrumb">
+            {% for key, breadcrumb in breadcrumbs %}
+              <li>
+                {% if key != breadcrumbs|length - 1 %}
+                <a href="{{ breadcrumb.href }}"><span>{{ breadcrumb.text }}</span></a>
+                {% else %}
+                <span>{{ breadcrumb.text }}</span>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+      <h1 class="title">{{ heading_title }}</h1>
+    </div>
+    {{ content_top }}
+    <div class="block">
+      {% if column_right %}<div class="g-row"><div class="g-cell checkout-cell_main">{% endif %}

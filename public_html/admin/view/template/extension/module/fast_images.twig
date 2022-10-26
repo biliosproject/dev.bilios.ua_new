@@ -1,0 +1,167 @@
+{{ header }}{{ column_left }}
+<div id="content">
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="pull-right">
+                <button type="submit" form="form-speedier" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+                <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+            <h1>{{ heading_title }}</h1>
+            <ul class="breadcrumb">
+                {% for breadcrumb in breadcrumbs %}
+                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        {% if error_warning %}
+            <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        {% endif %}
+        {% if success %}
+            <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        {% endif %}
+        {% if is_permition %}
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-speedier" class="form-horizontal">
+                      <div class="row">
+                       <div class="col-sm-2">
+                        <ul id="method-list" class="nav nav-pills nav-stacked">
+                            <li class="active"><a href="#tab-general" data-toggle="tab">{{ tab_general }}</a></li>
+                            <li><a href="#tab-lazy" data-toggle="tab">{{ tab_lazy }}</a></li>
+                            <li><a href="#tab-webp" data-toggle="tab">{{ tab_webp }}</a></li>
+                        </ul>
+                    </div>
+                      <div class="col-sm-10">
+                         <div class="tab-content">
+                            <div class="tab-pane active" id="tab-general">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+                                    <div class="col-sm-10">
+                                        <select name="module_fast_images_status" id="input-status" class="form-control">
+                                            {% if module_fast_images_status %}
+                                                <option value="1" selected="selected">{{ text_enabled }}</option>
+                                                <option value="0">{{ text_disabled }}</option>
+                                            {% else %}
+                                                <option value="1">{{ text_enabled }}</option>
+                                                <option value="0" selected="selected">{{ text_disabled }}</option>
+                                            {% endif %}
+                                        </select>
+                                    </div>
+                                </div>
+                             </div>
+                            <div class="tab-pane" id="tab-lazy">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="input-lazy">{{ entry_lazy }}</label>
+                                    <div class="col-sm-10">
+                                        <select name="module_fast_images_lazy" id="input-lazy" class="form-control">
+                                            {% if module_fast_images_lazy %}
+                                                <option value="1" selected="selected">{{ text_enabled }}</option>
+                                                <option value="0">{{ text_disabled }}</option>
+                                            {% else %}
+                                                <option value="1">{{ text_enabled }}</option>
+                                                <option value="0" selected="selected">{{ text_disabled }}</option>
+                                            {% endif %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="tab-webp">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ gd_label }}</label>
+                                    <div class="col-sm-10">
+                                        <div class="form-control-static">{{ gd_descr }}</div>
+                                    </div>
+                                </div>
+
+                                {% if gd_iswebp %}
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="input-towebp">{{ entry_towebp }}</label>
+                                        <div class="col-sm-10">
+                                            <select name="module_fast_images_towebp" id="input-towebp" class="form-control">
+                                                {% if module_fast_images_towebp %}
+                                                    <option value="1" selected="selected">{{ text_enabled }}</option>
+                                                    <option value="0">{{ text_disabled }}</option>
+                                                {% else %}
+                                                    <option value="1">{{ text_enabled }}</option>
+                                                    <option value="0" selected="selected">{{ text_disabled }}</option>
+                                                {% endif %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="input-pregen">{{ entry_pregen }}</label>
+                                        <div class="col-sm-10">
+                                            <select name="module_fast_images_pregen" id="input-pregen" class="form-control">
+                                                {% if module_fast_images_pregen %}
+                                                    <option value="1" selected="selected">{{ text_enabled }}</option>
+                                                    <option value="0">{{ text_disabled }}</option>
+                                                {% else %}
+                                                    <option value="1">{{ text_enabled }}</option>
+                                                    <option value="0" selected="selected">{{ text_disabled }}</option>
+                                                {% endif %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="input-quality">{{ entry_quality }}</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="module_fast_images_quality" value="{{ module_fast_images_quality }}"  id="input-quality" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    {% if is_forced %}
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="patch_text">{{ patch_label }}</label>
+                                            <div class="col-sm-10">
+                                                <div class="form-control-static">{{ forced_descr }}</div>
+                                                {% if forced_false %}<div class="form-control-static">{{ forced_false }}</div>{% endif %}
+
+                                                {% if is_nginx %}
+                                                    <div class="form-control-static">{{ forced_nginx }}</div>
+                                                    <textarea readonly name="patch_text" id="patch_text" class="form-control" rows="10">{{ nginx_area }}</textarea>
+                                                {% endif %}
+
+                                                {% if is_apache %}
+                                                    {% if patch_descr %}<div class="form-control-static">{{ patch_descr }}</div>{% endif %}
+                                                    {% if patch_area %}<textarea readonly name="patch_text" id="patch_text" class="form-control" rows="10">{{ patch_area }}</textarea>{% endif %}
+                                                    <br>
+                                                    {% if patch_button %}
+                                                        <p class="text-danger">{{ patch_alert }}</p>
+                                                        <a href="{{ patch_url }}" title="{{ patch_button }}" class="btn btn-primary"><i class="fa fa-save"></i> {{ patch_button }}</a>
+                                                    {% endif %}
+                                                    {% if unpatch_button %}
+                                                        <a href="{{ unpatch_url }}" title="{{ unpatch_button }}" class="btn btn-default"><i class="fa fa-undo"></i> {{ unpatch_button }}</a>
+                                                    {% endif %}
+                                                {% endif %}
+
+                                                {% if not forced_false %}
+                                                    <br><br>
+                                                    <img src="view/image/webp.jpg" width="196" height="82" />
+                                                    <br><br>
+                                                    <img src="view/image/webp.png" width="196" height="82" />
+                                                    <br><br>
+                                                    {{ res_descr }}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{{ footer }}

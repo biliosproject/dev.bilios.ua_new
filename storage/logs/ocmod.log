@@ -1,0 +1,2075 @@
+2022-10-22 21:29:04 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 69
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 77
+LINE: 151
+LINE: 168
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 59
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 67
+LINE: 73
+
+FILE: system/library/template/template.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+
+FILE: system/library/template/twig.php
+CODE: if (is_file($file)) {
+LINE: 13
+----------------------------------------------------------------
+MOD: Шаблон Revolution
+
+FILE: admin/controller/catalog/information.php
+CODE: if (isset($this->request->post['bottom'])) {
+LINE: 393
+
+FILE: admin/model/catalog/information.php
+CODE: $this->db->query("INSERT INTO " . DB_PREFIX . "information SET sort_order = '" . (int)$data['sort_order'] . "', bottom = '" . (isset($data['bottom']) ? (int)$data['bottom'] : 0) . "', status = '" . (int)$data['status'] . "', noindex = '" . (int)$data['noindex'] . "'");
+LINE: 6
+CODE: $this->db->query("UPDATE " . DB_PREFIX . "information SET sort_order = '" . (int)$data['sort_order'] . "', bottom = '" . (isset($data['bottom']) ? (int)$data['bottom'] : 0) . "', status = '" . (int)$data['status'] . "', noindex = '" . (int)$data['noindex'] . "' WHERE information_id = '" . (int)$information_id . "'");
+LINE: 43
+
+FILE: admin/language/en-gb/catalog/information.php
+CODE: $_['entry_bottom']
+LINE: 36
+
+FILE: admin/language/ru-ru/catalog/information.php
+CODE: $_['entry_bottom']
+LINE: 36
+
+FILE: admin/language/uk-ua/catalog/information.php
+CODE: $_['entry_bottom']
+LINE: 35
+
+FILE: admin/view/template/catalog/information_form.twig
+CODE: <label class="col-sm-2 control-label" for="input-bottom">
+LINE: 132
+
+FILE: admin/controller/catalog/option.php
+CODE: $data['languages']
+LINE: 321
+
+FILE: admin/model/catalog/option.php
+CODE: type = '" . $this->db->escape($data['type']) . "',
+LINE: 3
+LINE: 27
+
+FILE: admin/view/template/catalog/option_form.twig
+CODE: <table id="option-value"
+LINE: 205
+
+FILE: admin/controller/common/column_left.php
+CODE: $this->load->language('common/column_left');
+LINE: 34
+CODE: if ($this->user->hasPermission('access', 'catalog/information'))
+LINE: 151
+
+FILE: admin/language/en-gb/common/column_left.php
+CODE: $_['text_user']
+LINE: 68
+
+FILE: admin/language/ru-ru/common/column_left.php
+CODE: $_['text_user']
+LINE: 105
+
+FILE: admin/language/uk-ua/common/column_left.php
+CODE: $_['text_user']
+LINE: 104
+
+FILE: admin/view/template/common/column_left.twig
+CODE: <ul id="menu">
+LINE: 23
+
+FILE: catalog/controller/startup/seo_url.php
+CODE: if ($url[0] == 'information_id') {
+LINE: 71
+CODE: } elseif (isset($this->request->get['information_id'])) {
+LINE: 100
+CODE: && $url[0] != 'category_id' && $url[0] != 'product_id'
+LINE: 75
+CODE: ($data['route'] == 'information/information' && $key == 'information_id')
+LINE: 139
+CODE: } elseif ($key == 'path') {
+LINE: 161
+
+FILE: system/library/seopro.php
+CODE: 'article_id', 'blog_category_id'
+LINE: 69
+CODE: if ($url[0] == 'category_id') {
+LINE: 82
+CODE: if (isset($this->request->get['product_id'])) {
+LINE: 120
+CODE: case 'product/product':
+LINE: 174
+CODE: case 'product_id':
+LINE: 307
+CODE: private function getCategoryByProduct($product_id) {
+LINE: 682
+
+FILE: admin/controller/marketing/contact.php
+CODE: case 'customer_all':
+LINE: 116
+CODE: $message .= '  <body>' . html_entity_decode($this->request->post['message'], ENT_QUOTES, 'UTF-8') . '</body>' . "\n";
+LINE: 230
+CODE: foreach ($emails as $email) {
+LINE: 241
+CODE: $mail->setHtml($message);
+LINE: 255
+
+FILE: admin/view/template/marketing/contact.twig
+CODE: <option value="newsletter">{{ text_newsletter }}</option>
+LINE: 44
+
+FILE: admin/controller/catalog/category.php
+CODE: $this->load->model('tool/image');
+LINE: 424
+CODE: $data['placeholder']
+LINE: 473
+
+FILE: admin/model/catalog/category.php
+CODE: if (isset($data['image'])) {
+LINE: 24
+LINE: 112
+
+FILE: admin/view/template/catalog/category_form.twig
+CODE: <label class="col-sm-2 control-label" for="input-top">
+LINE: 983
+
+FILE: catalog/language/ru-ru/extension/total/sub_total.php
+CODE: Итого
+LINE: 4
+
+FILE: catalog/controller/common/search.php
+CODE: $this->load->language('common/search
+LINE: 36
+CODE: public function index() {
+LINE: 130
+
+FILE: catalog/language/ru-ru/common/header.php
+CODE: $_['text_login']
+LINE: 12
+
+FILE: catalog/language/en-gb/common/header.php
+CODE: $_['text_login']
+LINE: 9
+
+FILE: catalog/language/uk-ua/common/header.php
+CODE: $_['text_login']
+LINE: 10
+
+FILE: admin/controller/catalog/product.php
+CODE: protected function getForm() {
+LINE: 858
+CODE: if (isset($this->error['name']))
+LINE: 874
+CODE: $this->load->model('design/layout');
+LINE: 1639
+CODE: protected function validateForm() {
+LINE: 1663
+CODE: $data['product_images'][] = array(
+LINE: 1518
+CODE: $product_option_value['points_prefix'],
+LINE: 1408
+
+FILE: admin/model/catalog/product.php
+CODE: $product_id = $this->db->getLastId();
+LINE: 19
+CODE: (int)$data['sort_order'] . "', date_modified = NOW() WHERE product_id = '" . (int)$product_id . "'");
+LINE: 187
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "product WHERE
+LINE: 419
+CODE: public function getProduct(
+LINE: 470
+CODE: $this->db->query("INSERT INTO " . DB_PREFIX . "product_image SET product_id = '" . (int)$product_id . "', image = '" . $this->db->escape($product_image['image']) . "', sort_order = '" . (int)$product_image['sort_order'] . "'");
+LINE: 93
+LINE: 275
+CODE: weight_prefix =
+LINE: 59
+LINE: 234
+CODE: pov.weight_prefix
+LINE: 714
+CODE: 'product_option_value_id' =>
+LINE: 687
+CODE: shipping =
+LINE: 6
+LINE: 174
+CODE: description = '" . $this->db->escape($value['description']) . "',
+LINE: 26
+LINE: 196
+CODE: $result['description'],
+LINE: 609
+CODE: public function editProduct($product_id
+LINE: 179
+
+FILE: admin/view/template/catalog/product_form.twig
+CODE: {{ tab_design }}</a></li>
+LINE: 41
+CODE: <div class="tab-pane" id="tab-reward">
+LINE: 1126
+CODE: {{ footer }}
+LINE: 1858
+CODE: <td class="text-right">{{ entry_sort_order }}</td>
+LINE: 1029
+CODE: value="{{ product_image.image }}
+LINE: 1039
+CODE: id="input-image' + image_row + '" /></td>';
+LINE: 1719
+CODE: <td class="text-left"><button type="button" onclick="addImage();"
+LINE: 1051
+CODE: <td class="repnige" colspan="3"></td>
+LINE: 1049
+CODE: {% if product_option_value.price_prefix == '-' %}
+LINE: 701
+CODE: {% if product_option_value.points_prefix == '-' %}
+LINE: 740
+CODE: {% if product_option_value.weight_prefix == '-' %}
+LINE: 779
+CODE: <option value="-">-</option>';
+LINE: 1656
+LINE: 1662
+LINE: 1668
+CODE: <table id="option-value{{ option_row }}" class="table table-striped table-bordered table-hover">
+LINE: 615
+CODE: <td class="text-right"><select name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][price_prefix]"
+LINE: 691
+CODE: colspan="6"
+LINE: 816
+LINE: 966
+LINE: 1605
+CODE: <td class="text-left">{{ entry_subtract }}</td>';
+LINE: 1595
+CODE: <td class="text-right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price_prefix]
+LINE: 1668
+CODE: <div class="tab-pane" id="tab-option">
+LINE: 539
+CODE: <label class="col-sm-2 control-label" for="input-description{{ language.language_id }}">{{ entry_description }}</label>
+LINE: 93
+
+FILE: catalog/model/catalog/product.php
+CODE: $sql = "SELECT p.product_id, (SELECT AVG(rating)
+LINE: 64
+CODE: $sql = "SELECT DISTINCT ps.product_id, (SELECT AVG(rating)
+LINE: 214
+CODE: if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
+LINE: 177
+LINE: 234
+CODE: $sql .= " ORDER BY LCASE(" . $data['sort'] . ")";
+LINE: 179
+LINE: 236
+CODE: $sql .= " ORDER BY (CASE WHEN special IS NOT NULL THEN special WHEN discount IS NOT NULL THEN discount ELSE p.price END)";
+LINE: 191
+CODE: $sql .= " ORDER BY " . $data['sort'];
+LINE: 203
+LINE: 268
+CODE: $sql .= " ORDER BY p.sort_order";
+LINE: 216
+LINE: 291
+CODE: 'ps.price',
+LINE: 269
+CODE: $product_option_value['price_prefix'],
+LINE: 455
+CODE: $query->row['viewed']
+LINE: 57
+CODE: $product_option['required']
+LINE: 470
+CODE: $product_attribute['text']
+LINE: 417
+
+FILE: catalog/language/ru-ru/checkout/cart.php
+CODE: $_['error_recurring_required']
+LINE: 48
+
+FILE: catalog/controller/product/special.php
+CODE: $this->load->model('tool/image');
+LINE: 69
+CODE: $sort = 'p.sort_order';
+LINE: 84
+CODE: $order = 'ASC';
+LINE: 93
+CODE: $data['products'] = array();
+LINE: 196
+CODE: if ($result['image']) {
+LINE: 332
+CODE: $price = $this
+LINE: 340
+CODE: $price = false;
+LINE: 343
+CODE: $special = $this
+LINE: 348
+CODE: $special = false;
+LINE: 352
+CODE: $data['products'][] = array(
+LINE: 447
+CODE: if ($result['image']) {
+LINE: 349
+CODE: $image = $this->model_tool_image->resize('placeholder
+LINE: 353
+CODE: $data['products'][] = array(
+LINE: 494
+CODE: $tax,
+LINE: 502
+CODE: 25, 50, 75, 100));
+LINE: 585
+
+FILE: catalog/controller/product/manufacturer.php
+CODE: $this->load->model('tool/image');
+LINE: 69
+LINE: 187
+CODE: $sort = 'p.sort_order';
+LINE: 208
+CODE: $order = 'ASC';
+LINE: 217
+CODE: $data['products'] = array();
+LINE: 354
+CODE: if ($result['image']) {
+LINE: 491
+CODE: $price = $this
+LINE: 499
+CODE: $price = false;
+LINE: 502
+CODE: $special = $this
+LINE: 507
+CODE: $special = false;
+LINE: 511
+CODE: $data['products'][] = array(
+LINE: 606
+CODE: if ($result['image']) {
+LINE: 508
+CODE: $image = $this->model_tool_image->resize('placeholder
+LINE: 512
+CODE: $data['products'][] = array(
+LINE: 653
+CODE: $tax,
+LINE: 661
+CODE: 25, 50, 75, 100));
+LINE: 744
+
+FILE: catalog/controller/product/category.php
+CODE: $this->load->model('tool/image');
+LINE: 74
+CODE: $sort = 'p.sort_order';
+LINE: 101
+CODE: $order = 'ASC';
+LINE: 110
+CODE: $data['products'] = array();
+LINE: 299
+CODE: if ($result['image']) {
+LINE: 437
+CODE: $price = $this
+LINE: 445
+CODE: $price = false;
+LINE: 448
+CODE: $special = $this
+LINE: 453
+CODE: $special = false;
+LINE: 457
+CODE: $data['products'][] = array(
+LINE: 552
+CODE: if ($result['image']) {
+LINE: 454
+CODE: $image = $this->model_tool_image->resize('placeholder
+LINE: 458
+CODE: $data['products'][] = array(
+LINE: 599
+CODE: $tax,
+LINE: 607
+CODE: 25, 50, 75, 100));
+LINE: 698
+
+FILE: catalog/controller/product/search.php
+CODE: $this->load->model('tool/image');
+LINE: 74
+CODE: $sort = 'p.sort_order';
+LINE: 111
+CODE: $order = 'ASC';
+LINE: 117
+CODE: $data['products'] = array();
+LINE: 286
+CODE: if ($result['image']) {
+LINE: 428
+CODE: $price = $this
+LINE: 436
+CODE: $price = false;
+LINE: 439
+CODE: $special = $this
+LINE: 444
+CODE: $special = false;
+LINE: 448
+CODE: $data['products'][] = array(
+LINE: 543
+CODE: if ($result['image']) {
+LINE: 445
+CODE: $image = $this->model_tool_image->resize('placeholder
+LINE: 449
+CODE: $data['products'][] = array(
+LINE: 590
+CODE: $tax,
+LINE: 598
+CODE: 25, 50, 75, 100));
+LINE: 721
+CODE: sort=p.model&order=DESC
+LINE: 573
+CODE: $this->document->setTitle($this->language->get('heading_title'));
+LINE: 114
+CODE: sort=p.model&order=DESC
+LINE: 732
+CODE: getManufacturers()
+LINE: 92
+CODE: $data['categories'][$key]['manufacturer']
+LINE: 112
+CODE: $data['categories'][$key]['manufacturer']
+LINE: 113
+CODE: if ($manufacturer_info)
+LINE: 270
+CODE: sort=p.model&order=DESC
+LINE: 689
+CODE: $data['breadcrumbs'] = array();
+LINE: 147
+CODE: $data['breadcrumbs'] = array();
+LINE: 142
+CODE: $result['name'],
+LINE: 613
+CODE: $data['products'][]
+LINE: 615
+CODE: $data['categories'][] = array(
+LINE: 268
+CODE: $data['categories'][] = array(
+LINE: 271
+CODE: sort=p.model&order=DESC
+LINE: 740
+CODE: $data['sorts'] = array();
+LINE: 1014
+CODE: $data['description'] = html_entity_decode
+LINE: 259
+
+FILE: admin/controller/common/header.php
+CODE: $this->load->model('setting/store')
+LINE: 106
+
+FILE: admin/view/template/common/header.twig
+CODE: {% for style in styles %}
+LINE: 25
+CODE: javascript/font-awesome
+LINE: 16
+
+FILE: catalog/controller/information/sitemap.php
+CODE: $data['special']
+LINE: 88
+
+FILE: catalog/controller/checkout/cart.php
+CODE: $image = '';
+LINE: 79
+CODE: $this->session->data['success'] = $this->language->get('text_remove');
+LINE: 401
+CODE: $json['total'] = sprintf($this->language->get('text_items')
+LINE: 380
+LINE: 479
+CODE: $option_data[] = array(
+LINE: 112
+CODE: $option['name'],
+LINE: 114
+CODE: 'checkout/checkout'
+LINE: 237
+LINE: 415
+LINE: 538
+
+FILE: catalog/controller/product/product.php
+CODE: $this->model_tool_image->resize($option_value['image'], 50, 50),
+LINE: 341
+CODE: $this->model_catalog_product->updateViewed
+LINE: 927
+CODE: $data['breadcrumbs'] = array();
+LINE: 11
+CODE: $data['reviews'][] = array(
+LINE: 1033
+CODE: $data['reviews'] = array();
+LINE: 1026
+CODE: $data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
+LINE: 259
+CODE: $option['required']
+LINE: 362
+LINE: 747
+CODE: $this->load->model('catalog/category');
+LINE: 158
+CODE: if ($product_info['quantity'] <= 0) {
+LINE: 592
+CODE: $data['images'] = array();
+LINE: 621
+CODE: $data['images'][] = array(
+LINE: 630
+CODE: $data['price'] = $this
+LINE: 638
+CODE: $data['price'] = false;
+LINE: 641
+CODE: $data['special'] = $this
+LINE: 657
+CODE: $data['special'] = false;
+LINE: 664
+CODE: $data['reviews'] = sprintf($this->language->get('text_reviews'), (int)$product_info['reviews']);
+LINE: 740
+CODE: $option_value['name'],
+LINE: 702
+LINE: 1104
+CODE: $this->model_tool_image->resize($option_value['image'], 50, 50),
+NOT FOUND - OPERATION SKIPPED!
+CODE: $results = $this->model_catalog_product->getProductRelated
+LINE: 819
+CODE: if ($result['image']) {
+LINE: 1021
+CODE: if ($result['image']) {
+LINE: 1038
+CODE: $image = $this->model_tool_image->resize('placeholder
+LINE: 1042
+CODE: $data['products'][] = array(
+LINE: 1083
+CODE: $data['products'][] = array(
+LINE: 1112
+CODE: $tax,
+LINE: 1120
+LINE: 1475
+CODE: public function review() {
+LINE: 1866
+CODE: ($page - 1) * 5, 5);
+LINE: 1885
+CODE: $pagination->limit = 5;
+LINE: 1903
+CODE: $data['results'] = sprintf($this->language->get('text_pagination'), ($review_total) ? (($page - 1) * 5) + 1 : 0, ((($page - 1) * 5) > ($review_total - 5)) ? $review_total : ((($page - 1) * 5) + 5), $review_total, ceil($review_total / 5));
+LINE: 1908
+CODE: $data['stock'] = $product_info['quantity'];
+LINE: 595
+CODE: $data['stock'] = $product_info['stock_status'];
+LINE: 593
+CODE: $data['stock'] = $this->language->get('text_instock');
+LINE: 597
+CODE: $data['popup'] = '';
+LINE: 605
+CODE: $data['thumb'] = '';
+LINE: 611
+
+FILE: catalog/controller/information/contact.php
+CODE: $this->document->setTitle($this->language->get('heading_title'));
+LINE: 7
+LINE: 171
+CODE: $data['locations'] = array();
+LINE: 244
+CODE: if ((utf8_strlen($this->request->post['name']
+LINE: 322
+
+FILE: catalog/controller/common/home.php
+CODE: $data['content_bottom']
+LINE: 94
+
+FILE: catalog/controller/common/header.php
+CODE: $this->load->language('common/header');
+LINE: 53
+CODE: $data['base'] = $server;
+LINE: 574
+CODE: public function index
+LINE: 68
+CODE: $data['menu'] = $this->load->controller('common/menu');
+LINE: 709
+
+FILE: catalog/controller/common/menu.php
+CODE: $this->load->model('catalog/category');
+LINE: 15
+CODE: foreach ($children as $child) {
+LINE: 30
+CODE: return $this->load->view
+LINE: 135
+
+FILE: catalog/controller/common/footer.php
+CODE: $data['informations'] = array();
+LINE: 374
+CODE: $data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
+LINE: 398
+
+FILE: catalog/controller/common/cart.php
+CODE: $this->load->language('common/cart');
+LINE: 44
+CODE: sprintf($this->language->get('text_items')
+LINE: 90
+CODE: $image = '';
+NOT FOUND - OPERATION SKIPPED!
+CODE: $option_data[] = array(
+LINE: 128
+CODE: 'checkout/checkout'
+LINE: 183
+CODE: $option_data = array();
+LINE: 105
+CODE: $product['model'],
+LINE: 151
+
+FILE: admin/controller/catalog/review.php
+CODE: if (isset($this->request->post['product_id'])) {
+LINE: 499
+
+FILE: admin/language/ru-ru/catalog/review.php
+CODE: $_['entry_product']
+LINE: 27
+
+FILE: admin/model/catalog/review.php
+CODE: $this->db->query("INSERT INTO " . DB_PREFIX . "review SET author = '" . $this->db->escape($data['author']) . "', product_id = '" . (int)$data['product_id'] . "', text = '" . $this->db->escape(strip_tags($data['text'])) . "', rating = '" . (int)$data['rating'] . "', status = '" . (int)$data['status'] . "', date_added = '" . $this->db->escape($data['date_added']) . "'");
+LINE: 6
+CODE: $this->db->query("UPDATE " . DB_PREFIX . "review SET author = '" . $this->db->escape($data['author']) . "', product_id = '" . (int)$data['product_id'] . "', text = '" . $this->db->escape(strip_tags($data['text'])) . "', rating = '" . (int)$data['rating'] . "', status = '" . (int)$data['status'] . "', date_added = '" . $this->db->escape($data['date_added']) . "', date_modified = NOW() WHERE review_id = '" . (int)$review_id . "'");
+LINE: 16
+
+FILE: admin/view/template/catalog/review_form.twig
+CODE: <label class="col-sm-2 control-label" for="input-name">{{ entry_rating }}</label>
+LINE: 66
+
+FILE: catalog/model/catalog/review.php
+CODE: $query = $this->db->query("SELECT r.review_id, r.author, r.rating, r.text, p.product_id, pd.name, p.price, p.image, r.date_added FROM " . DB_PREFIX . "review r LEFT JOIN " . DB_PREFIX . "product p ON (r.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p.product_id = '" . (int)$product_id . "' AND p.date_available <= NOW() AND p.status = '1' AND r.status = '1' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY r.date_added DESC LIMIT " . (int)$start . "," . (int)$limit);
+LINE: 58
+
+FILE: catalog/controller/error/not_found.php
+CODE: $this->response->setOutput($this->load->view('error/not_found', $data));
+LINE: 46
+
+FILE: admin/language/ru-ru/catalog/product.php
+CODE: $_['heading_title']
+LINE: 6
+
+FILE: catalog/language/ru-ru/ru-ru.php
+CODE: <i class="fa fa-home"></i>
+LINE: 15
+
+FILE: catalog/language/uk-ua/uk-ua.php
+CODE: <i class="fa fa-home"></i>
+LINE: 13
+
+FILE: catalog/language/en-gb/en-gb.php
+CODE: <i class="fa fa-home"></i>
+LINE: 12
+CODE: <i class="fa fa-home"></i>
+NOT FOUND - OPERATION SKIPPED!
+CODE: <i class="fa fa-home"></i>
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/information/information.php
+CODE: $data['column_left']
+LINE: 93
+LINE: 155
+
+FILE: catalog/controller/account/account.php
+CODE: $data['edit']
+LINE: 41
+
+FILE: catalog/controller/extension/module/account.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/amazon_login.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/amazon_pay.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/banner.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+LINE: 8
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+LINE: 9
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+LINE: 10
+
+FILE: catalog/controller/extension/module/bestseller.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/blog_category.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/blog_featured.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/blog_latest.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/carousel.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+LINE: 8
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+LINE: 9
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+LINE: 10
+
+FILE: catalog/controller/extension/module/category.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/divido_calculator.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/fast_images.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/featured.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/featured_article.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/featured_product.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/filter.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/google_hangouts.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/html.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/information.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/klarna_checkout_module.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/latest.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/laybuy_layout.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/paypal_smart_button.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/pilibaba_button.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/pp_braintree_button.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/revblogcategorymod.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/revblogmod.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/revmenumod.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/revmenumodcustom.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/sagepay_direct_cards.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/sagepay_server_cards.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/simple.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/simpleapi.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/slideshow.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+LINE: 8
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+LINE: 9
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+LINE: 10
+
+FILE: catalog/controller/extension/module/special.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/extension/module/store.php
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/swiper.min.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: system/library/cart/cart.php
+CODE: $option_data = array();
+LINE: 53
+CODE: } elseif ($option_value_query->row['price_prefix'] == '-') {
+LINE: 70
+LINE: 120
+CODE: $product_data[] = array(
+LINE: 265
+CODE: ($price + $option_price)
+LINE: 278
+LINE: 279
+CODE: } elseif ($option_value_query->row['weight_prefix'] == '-') {
+LINE: 86
+LINE: 140
+CODE: ($product_query->row['weight'] + $option_weight)
+LINE: 291
+CODE: pov.weight_prefix
+LINE: 60
+LINE: 114
+CODE: $option_value_query->row['option_value_id'],
+LINE: 99
+LINE: 154
+CODE: if ($option_value_query->num_rows) {
+LINE: 67
+LINE: 127
+CODE: if ($option_query->row['type'] == 'select' || $option_query->row['type'] == 'radio') {
+LINE: 59
+CODE: $product_query->row['model'],
+LINE: 289
+CODE: if ($product_special_query->num_rows) {
+LINE: 241
+CODE: $product_info
+LINE: 19
+LINE: 21
+LINE: 22
+LINE: 23
+LINE: 29
+LINE: 34
+LINE: 35
+LINE: 36
+LINE: 39
+LINE: 49
+LINE: 55
+LINE: 57
+LINE: 58
+LINE: 63
+CODE: $this->load->model('catalog/product');
+LINE: 108
+CODE: $price = $this
+LINE: 133
+CODE: $price = false;
+LINE: 136
+CODE: $special = $this
+LINE: 141
+CODE: $special = false;
+LINE: 145
+CODE: $data['products'][] = array(
+LINE: 354
+CODE: $image = $this->model_tool_image->resize($result['image']
+LINE: 143
+CODE: $image = $this->model_tool_image->resize('placeholder
+LINE: 146
+CODE: $data['products'][] = array(
+LINE: 401
+CODE: $tax,
+LINE: 409
+CODE: $product_info
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->load->model('catalog/product');
+LINE: 108
+CODE: $price = $this
+LINE: 126
+CODE: $price = false;
+LINE: 129
+CODE: $special = $this
+LINE: 134
+CODE: $special = false;
+LINE: 138
+CODE: $data['products'][] = array(
+LINE: 347
+CODE: $image = $this->model_tool_image->resize($result['image']
+LINE: 136
+CODE: $image = $this->model_tool_image->resize('placeholder
+LINE: 139
+CODE: $data['products'][] = array(
+LINE: 394
+CODE: $tax,
+LINE: 402
+CODE: $product_info
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->load->model('catalog/product');
+LINE: 108
+CODE: $price = $this
+LINE: 126
+CODE: $price = false;
+LINE: 129
+CODE: $special = $this
+LINE: 134
+CODE: $special = false;
+LINE: 138
+CODE: $data['products'][] = array(
+LINE: 347
+CODE: $image = $this->model_tool_image->resize($result['image']
+LINE: 136
+CODE: $image = $this->model_tool_image->resize('placeholder
+LINE: 139
+CODE: $data['products'][] = array(
+LINE: 394
+CODE: $tax,
+LINE: 402
+CODE: $product_info
+NOT FOUND - OPERATION SKIPPED!
+CODE: $this->load->model('catalog/product');
+LINE: 108
+CODE: $price = $this
+LINE: 133
+CODE: $price = false;
+LINE: 136
+CODE: $special = $this
+LINE: 141
+CODE: $special = false;
+LINE: 145
+CODE: $data['products'][] = array(
+LINE: 354
+CODE: $image = $this->model_tool_image->resize($result['image']
+LINE: 143
+CODE: $image = $this->model_tool_image->resize('placeholder
+LINE: 146
+CODE: $data['products'][] = array(
+LINE: 401
+CODE: $tax,
+LINE: 409
+
+FILE: admin/model/tool/image.php
+CODE: if (!in_array($image_type, array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF))) {
+LINE: 15
+CODE: if ($width_orig != $width || $height_orig != $height) {
+LINE: 34
+
+FILE: catalog/model/tool/image.php
+CODE: if (!in_array($image_type, array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF))) {
+LINE: 15
+CODE: if ($width_orig != $width || $height_orig != $height) {
+LINE: 34
+CODE: copy(DIR_IMAGE . $image_old, DIR_IMAGE . $image_new);
+LINE: 43
+
+FILE: system/library/image.php
+CODE: $this->image = imagecreatefromjpeg($file);
+LINE: 47
+
+FILE: admin/controller/common/filemanager.php
+CODE: $files = glob($directory . '/' . $filter_name . '*.{jpg,jpeg,png,gif,JPG,JPEG,PNG,GIF}', GLOB_BRACE);
+LINE: 59
+CODE: 'png'
+LINE: 262
+CODE: 'image/gif'
+LINE: 276
+
+FILE: catalog/language/ru-ru/account/account.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/address.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/affiliate.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/download.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/edit.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/forgotten.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/login.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/logout.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/newsletter.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/order.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/password.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/recurring.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/register.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/reset.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/return.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/reward.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/simpleregister.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/success.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/tracking.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/transaction.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/voucher.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/account/wishlist.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/affiliate/account.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/affiliate/edit.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/affiliate/forgotten.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/affiliate/login.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/affiliate/logout.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/affiliate/password.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/affiliate/payment.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/affiliate/register.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/affiliate/success.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/affiliate/tracking.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/affiliate/transaction.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/api/cart.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/api/coupon.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/api/currency.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/api/customer.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/api/login.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/api/order.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/api/payment.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/api/reward.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/api/shipping.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/api/voucher.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/blog/article.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/blog/category.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/blog/latest.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/blog/menu.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/checkout/checkout.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/checkout/failure.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/checkout/simplecheckout.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/checkout/success.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/common/cart.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/common/currency.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/common/footer.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/common/language.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/common/maintenance.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/common/menu.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/common/search.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/error/not_found.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/information/contact.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/information/information.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/information/sitemap.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/mail/affiliate.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/mail/forgotten.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/mail/order_add.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/mail/order_alert.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/mail/order_edit.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/mail/register.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/mail/review.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/mail/transaction.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/mail/voucher.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/module/amazon_login.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/module/amazon_pay.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/product/bestseller.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/product/category.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/product/compare.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/product/latest.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/product/manufacturer.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/product/mostviewed.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/product/product.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/product/search.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/product/special.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/revolution/revcompare.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/revolution/revolution.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+LINE: 180
+LINE: 181
+
+FILE: catalog/language/ru-ru/revolution/revp_mod.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/revolution/revpbest.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/revolution/revplast.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/revolution/revreview_mail.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/revolution/revslider.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/revolution/revstore_review.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/revolution/revsubscribe.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/tool/simpleapi.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/language/ru-ru/tool/upload.php
+CODE: Мною прочитаны и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+CODE: Мною прочитан и я даю согласие с документом
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/startup/startup.php
+CODE: $this->registry->set('url'
+LINE: 51
+CODE: public function index
+LINE: 9
+
+FILE: catalog/model/account/order.php
+CODE: $order_query->row['order_id'],
+LINE: 43
+CODE: SELECT * FROM " . DB_PREFIX . "order_option WHERE order_id = '" . (int)$order_id . "' AND order_product_id = '" . (int)$order_product_id . "'
+LINE: 129
+CODE: "SELECT * FROM " . DB_PREFIX . "order_product WHERE order_id = '" . (int)$order_id . "'"
+LINE: 123
+
+FILE: catalog/controller/account/order.php
+CODE: public function info
+LINE: 101
+CODE: public function index
+LINE: 9
+CODE: $product['model'],
+LINE: 294
+CODE: 'text' => $this->language->get('heading_title'),
+LINE: 40
+LINE: 146
+CODE: $this->document->setTitle($this->language->get('text_order'));
+LINE: 125
+CODE: $this->document->setTitle($this->language->get('heading_title'));
+LINE: 18
+CODE: $data['shipping_address']
+LINE: 268
+CODE: $data['shipping_address']
+LINE: 280
+CODE: $option_data = array();
+LINE: 300
+LINE: 432
+CODE: $option_data[]
+LINE: 326
+CODE: $option_data[]
+LINE: 327
+CODE: $product['model'],
+LINE: 343
+CODE: (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
+LINE: 329
+
+FILE: catalog/controller/account/download.php
+CODE: public function index
+LINE: 8
+CODE: $this->language->get('heading_title')
+LINE: 17
+
+FILE: catalog/controller/account/forgotten.php
+CODE: public function index
+LINE: 11
+CODE: $this->language->get('text_email')
+NOT FOUND - OPERATION SKIPPED!
+
+FILE: catalog/controller/checkout/success.php
+CODE: $data['continue']
+LINE: 82
+
+FILE: catalog/controller/mail/order.php
+CODE: $data['shipping_address']
+LINE: 235
+CODE: $data['shipping_address']
+LINE: 247
+CODE: $option_data = array();
+LINE: 262
+LINE: 463
+CODE: $option_data[]
+LINE: 288
+LINE: 498
+CODE: $option_data[]
+LINE: 289
+LINE: 500
+CODE: $order_product['model'],
+LINE: 297
+LINE: 508
+CODE: (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
+LINE: 291
+LINE: 502
+
+FILE: catalog/model/checkout/order.php
+CODE: ("SELECT * FROM " . DB_PREFIX . "order_product WHERE order_id = '" . (int)$order_id . "'")
+LINE: 240
+CODE: ("SELECT * FROM " . DB_PREFIX . "order_option WHERE order_id = '" . (int)$order_id . "' AND order_product_id = '" . (int)$order_product_id . "'")
+LINE: 246
+
+FILE: catalog/controller/common/column_left.php
+CODE: return $this->load->view
+LINE: 91
+CODE: $layout_id = 0;
+LINE: 24
+
+FILE: catalog/controller/common/column_right.php
+CODE: $layout_id = 0;
+LINE: 24
+
+FILE: catalog/controller/common/content_bottom.php
+CODE: $layout_id = 0;
+LINE: 24
+
+FILE: catalog/controller/common/content_top.php
+CODE: $layout_id = 0;
+LINE: 24
+----------------------------------------------------------------
+MOD: Шаблон Revolution | Фикс фильтра
+CODE: $data['breadcrumbs'] = array();
+LINE: 192
+CODE: $data['categories'] = array();
+LINE: 333
+CODE: $data['products'] = array();
+LINE: 415
+CODE: => $limit
+LINE: 426
+CODE: $pagination = new Pagination
+LINE: 1219
+CODE: $this->response->setOutput($this->load->view('product/category', $data));
+LINE: 1284
+CODE: public function index()
+LINE: 18
+CODE: $data['sorts'] = array();
+LINE: 1125
+CODE: $sql = "SELECT COUNT(DISTINCT p.product_id) AS total";
+LINE: 518
+CODE: $sql .= " LEFT JOIN " . DB_PREFIX . "product_description
+LINE: 95
+LINE: 565
+CODE: if (!empty($data['filter_name']) || !empty($data['filter_tag'])) {
+LINE: 150
+LINE: 653
+CODE: $sql .= " GROUP BY p.product_id";
+LINE: 206
+CODE: if (!empty($data['filter_manufacturer_id'])) {
+LINE: 202
+LINE: 703
+CODE: public function getProfile(
+LINE: 817
+CODE: ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) AS special";
+LINE: 70
+CODE: $sql .= " AND p2c.category_id = '" . (int)$data['filter_category_id'] . "'";
+LINE: 106
+LINE: 659
+CODE: foreach ($modules as $module) {
+LINE: 92
+CODE: function validate()
+LINE: 530
+CODE: if ($data) {
+LINE: 186
+----------------------------------------------------------------
+MOD: Fix for twig
+CODE: $loader = new \Twig_Loader_Array(array($filename . '.twig' => $code));
+NOT FOUND - OPERATION SKIPPED!
+CODE: $loader = new \Twig\Loader\ArrayLoader(array($filename . '.twig' => $code));
+LINE: 34
+----------------------------------------------------------------
+MOD: SimplePars
+CODE: if ($this->user->hasPermission('access', 'catalog/download')) {
+LINE: 133
+----------------------------------------------------------------
+MOD: 2 simple url rewrite
+CODE: $this->registry->set('url'
+LINE: 47
+----------------------------------------------------------------
+MOD: SEO URL Generator FREE by Serge Tkach
+CODE: $parts = explode('/', $this->request->get['_route_']);
+LINE: 30
+CODE: $this->request->get['route'] = 'error/not_found';
+LINE: 176
+CODE: public function prepareRoute($parts) {
+LINE: 59
+CODE: $this->request->get['route'] = 'error/not_found';
+LINE: 209
+CODE: if (isset($this->request->post['category_seo_url'])) {
+LINE: 598
+CODE: if (isset($this->error['keyword'])) {
+LINE: 281
+CODE: if ($this->request->post['category_seo_url']) {
+LINE: 686
+CODE: if (isset($data['category_seo_url'])) {
+LINE: 128
+CODE: $this->db->query("DELETE FROM `" . DB_PREFIX . "seo_url` WHERE query = 'category_id=
+LINE: 478
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "category WHERE category_id = '" . (int)$category_id . "'");
+LINE: 550
+CODE: <input type="text" name="category_seo_url[{{ store.store_id }}][{{ language.language_id }}]" value="{% if category_seo_url[store.store_id][language.language_id] %}{{ category_seo_url[store.store_id][language.language_id] }}{% endif %}" placeholder="{{ entry_keyword }}" class="form-control" />
+LINE: 1039
+CODE: {{ footer }}
+LINE: 1543
+CODE: if (isset($this->request->post['product_seo_url'])) {
+LINE: 1659
+CODE: if (isset($this->error['keyword'])) {
+LINE: 906
+CODE: if ($this->request->post['product_seo_url']) {
+LINE: 1760
+CODE: $data['keyword'] = '';
+LINE: 397
+CODE: if (isset($data['product_seo_url'])) {
+LINE: 222
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "seo_url WHERE query =
+LINE: 645
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "product WHERE product_id = '" . (int)$product_id . "'");
+LINE: 726
+CODE: <input type="text" name="product_seo_url[{{ store.store_id }}][{{ language.language_id }}]" value="{% if product_seo_url[store.store_id][language.language_id] %}{{ product_seo_url[store.store_id][language.language_id] }}{% endif %}" placeholder="{{ entry_keyword }}" class="form-control"/>
+LINE: 1242
+CODE: {{ footer }}
+LINE: 2235
+
+FILE: admin/controller/catalog/manufacturer.php
+CODE: if (isset($this->request->post['manufacturer_seo_url'])) {
+LINE: 518
+CODE: if (isset($this->error['keyword'])) {
+LINE: 288
+CODE: if ($this->request->post['manufacturer_seo_url']) {
+LINE: 574
+
+FILE: admin/model/catalog/manufacturer.php
+CODE: if (isset($data['manufacturer_seo_url'])) {
+LINE: 114
+CODE: $this->db->query("DELETE FROM `" . DB_PREFIX . "seo_url` WHERE query = 'manufacturer_id=
+LINE: 398
+
+FILE: admin/view/template/catalog/manufacturer_form.twig
+CODE: <input type="text" name="manufacturer_seo_url[{{ store.store_id }}][{{ language.language_id }}]" value="{% if manufacturer_seo_url[store.store_id][language.language_id] %}{{ manufacturer_seo_url[store.store_id][language.language_id] }}{% endif %}" placeholder="{{ entry_keyword }}" class="form-control" />
+LINE: 131
+CODE: {{ footer }}
+LINE: 572
+CODE: if (isset($this->request->post['information_seo_url'])) {
+LINE: 470
+CODE: if (isset($this->error['keyword'])) {
+LINE: 296
+CODE: if ($this->request->post['information_seo_url']) {
+LINE: 542
+CODE: if (isset($data['information_seo_url'])) {
+LINE: 92
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "seo_url WHERE query = 'information_id=
+LINE: 346
+CODE: <input type="text" name="information_seo_url[{{ store.store_id }}][{{ language.language_id }}]" value="{% if information_seo_url[store.store_id][language.language_id] %}{{ information_seo_url[store.store_id][language.language_id] }}{% endif %}" placeholder="{{ entry_keyword }}" class="form-control" />
+LINE: 181
+CODE: {{ footer }}
+LINE: 544
+----------------------------------------------------------------
+MOD: Шаблон Revolution | Фикс старая цена рядом с новой
+
+FILE: catalog/view/theme/revolution/template/product/category.twig
+CODE: <span class="price-old special_no_format{{ product['product_id'] }}">{{ product['price'] }}</span>
+LINE: 200
+LINE: 696
+CODE: <span class="price-new">
+LINE: 539
+LINE: 554
+LINE: 1027
+LINE: 1039
+
+FILE: catalog/view/theme/revolution/template/product/product.twig
+CODE: <span class="price-old special_no_format{{ product['product_id'] }}">{{ product['price'] }}</span>
+LINE: 1505
+LINE: 2197
+LINE: 2878
+CODE: <span class="price-new">
+LINE: 1835
+LINE: 1847
+LINE: 2529
+LINE: 2541
+LINE: 2972
+
+FILE: catalog/view/theme/revolution/template/product/manufacturer_info.twig
+CODE: <span class="price-old special_no_format{{ product['product_id'] }}">{{ product['price'] }}</span>
+LINE: 121
+CODE: <span class="price-new">
+LINE: 460
+LINE: 475
+
+FILE: catalog/view/theme/revolution/template/product/search.twig
+CODE: <span class="price-old special_no_format{{ product['product_id'] }}">{{ product['price'] }}</span>
+LINE: 177
+CODE: <span class="price-new">
+LINE: 516
+LINE: 531
+
+FILE: catalog/view/theme/revolution/template/product/special.twig
+CODE: <span class="price-old special_no_format{{ product['product_id'] }}">{{ product['price'] }}</span>
+LINE: 113
+CODE: <span class="price-new">
+LINE: 452
+LINE: 467
+
+FILE: catalog/view/theme/revolution/template/revolution/revblog_blog.twig
+CODE: <span class="price-old special_no_format{{ product['product_id'] }}">{{ product['price'] }}</span>
+LINE: 100
+CODE: <span class="price-new">
+LINE: 431
+LINE: 443
+
+FILE: catalog/view/theme/revolution/template/revolution/revp.twig
+CODE: <span class="price-old special_no_format{{ product['product_id'] }}">{{ product['price'] }}</span>
+LINE: 113
+CODE: <span class="price-new">
+LINE: 452
+LINE: 467
+
+FILE: catalog/view/theme/revolution/template/revolution/revp_mod.twig
+CODE: <span class="price-old special_no_format{{ product['product_id'] }}">{{ product['price'] }}</span>
+LINE: 34
+CODE: <span class="price-new">
+LINE: 365
+LINE: 377
+
+FILE: catalog/view/theme/revolution/template/revolution/revp_modt.twig
+CODE: <span class="price-old special_no_format{{ product['product_id'] }}">{{ product['price'] }}</span>
+LINE: 48
+LINE: 505
+LINE: 962
+CODE: <span class="price-new">
+LINE: 379
+LINE: 391
+LINE: 838
+LINE: 850
+LINE: 1297
+LINE: 1309
+
+FILE: catalog/view/theme/revolution/template/revolution/revslider.twig
+CODE: <span class="price-old special_no_format{{ product['product_id'] }}">{{ product['price'] }}</span>
+LINE: 35
+CODE: <span class="price-new">
+LINE: 366
+LINE: 378
+
+FILE: catalog/view/theme/revolution/template/revolution/revslider_tabs.twig
+CODE: <span class="price-old special_no_format{{ product['product_id'] }}">{{ product['price'] }}</span>
+LINE: 61
+LINE: 823
+LINE: 1585
+LINE: 2347
+LINE: 3109
+LINE: 3871
+LINE: 4633
+LINE: 5395
+CODE: <span class="price-new">
+LINE: 392
+LINE: 404
+LINE: 1156
+LINE: 1168
+LINE: 1920
+LINE: 1932
+LINE: 2684
+LINE: 2696
+LINE: 3448
+LINE: 3460
+LINE: 4212
+LINE: 4224
+LINE: 4976
+LINE: 4988
+LINE: 5740
+LINE: 5752
+
+FILE: catalog/view/theme/revolution/template/revolution/revviewed_products.twig
+CODE: <span class="price-old special_no_format{{ product['product_id'] }}">{{ product['price'] }}</span>
+LINE: 41
+CODE: <span class="price-new">
+LINE: 372
+LINE: 384
+
+FILE: catalog/view/theme/revolution/template/extension/module/bestseller.twig
+CODE: <span class="price-old special_no_format{{ product['product_id'] }}">{{ product['price'] }}</span>
+LINE: 34
+CODE: <span class="price-new">
+LINE: 365
+LINE: 377
+
+FILE: catalog/view/theme/revolution/template/extension/module/featured.twig
+CODE: <span class="price-old special_no_format{{ product['product_id'] }}">{{ product['price'] }}</span>
+LINE: 34
+CODE: <span class="price-new">
+LINE: 365
+LINE: 377
+
+FILE: catalog/view/theme/revolution/template/extension/module/latest.twig
+CODE: <span class="price-old special_no_format{{ product['product_id'] }}">{{ product['price'] }}</span>
+LINE: 34
+CODE: <span class="price-new">
+LINE: 365
+LINE: 377
+
+FILE: catalog/view/theme/revolution/template/extension/module/special.twig
+CODE: <span class="price-old special_no_format{{ product['product_id'] }}">{{ product['price'] }}</span>
+LINE: 34
+CODE: <span class="price-new">
+LINE: 365
+LINE: 377
+
+FILE: catalog/view/theme/revolution/template/product/compare.twig
+CODE: <span class="stiker stiker_spec"><span class="price-old">{{ product['price'] }}</span>
+LINE: 124
+LINE: 334
+----------------------------------------------------------------

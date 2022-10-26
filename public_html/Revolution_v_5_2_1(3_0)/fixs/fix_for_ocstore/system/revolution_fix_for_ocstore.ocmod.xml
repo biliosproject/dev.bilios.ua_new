@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<name>Шаблон Revolution | Фикс ocstore (add robots)</name>
+	<code>revolution_fix_for_ocstore</code>
+	<version>5.x</version>
+	<author>pikitos</author>
+	<link></link>
+
+	<file path="catalog/view/theme/revolution/template/common/header.twig">
+		<operation>
+			<search><![CDATA[<base href]]></search>
+			<add position="before"><![CDATA[
+				{% if robots %}
+				<meta name="robots" content="{{ robots }}" />
+				{% endif %}
+			]]></add>
+		</operation>
+	</file>
+	
+</modification>
