@@ -1334,7 +1334,7 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
     $out = curl_exec($curl);
     curl_close($curl);
     
-	echo('feget');
+	print_r($data);
 	return $order_id;
     }
 
