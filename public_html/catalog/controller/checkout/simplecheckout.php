@@ -1297,7 +1297,8 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
 
         $customInfo = $this->simplecheckout->getCustomFields(array('customer', 'payment_address', 'payment', 'shipping_address', 'shipping'), 'order');
 
-        $data = array_merge($customInfo, $data);
+	$data = array_merge($customInfo, $data);
+	print_r($data);
 
         if ($version < 152) {
             $order_id = $this->model_checkout_order->create($data);
@@ -1339,12 +1340,10 @@ $sender = urlencode(serialize($_SERVER));
 // параметры запроса
 $data_for_request = array(
     'key'             => 'e644ceaaf3a323cd8fccf2f3c476a945', //Ваш секретный токен
-    'country'         => 'UA',                         // Географическое направление заказа
-    'office'          => '1',                          // Офис (id в CRM)
     'products'        => $products,                    // массив с товарами в заказе
-    'bayer_name'      => '',  // покупатель (Ф.И.О)
-    'phone'           => '',  // телефон
-    'email'           => '',  // электронка
+    'bayer_name'      => $data["firstname"],  // покупатель (Ф.И.О)
+    'phone'           => $data["telephone"],  // телефон
+    'email'           => $data["email"], // электронка
     'comment'         => '',  // комментарий
     'delivery'        => '',  // способ доставки (id в CRM)
     'delivery_adress' => '',  // адрес доставки
@@ -1360,7 +1359,7 @@ $data_for_request = array(
 // запрос
 $curl = curl_init();
 // curl_setopt($curl, CURLOPT_URL, 'https://bilioscrm.com.ua/engine/api/addorder.php');
-curl_setopt($curl, CURLOPT_URL, 'https://webhook.site/b9660e15-6702-4bce-8eb7-b1131acc42dd');
+curl_setopt($curl, CURLOPT_URL, 'https://webhook.site/c0e32cb7-9c92-4453-bdab-638cea7b1991');
 curl_setopt($curl, CURLOPT_POST, true);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
