@@ -1298,7 +1298,6 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
         $customInfo = $this->simplecheckout->getCustomFields(array('customer', 'payment_address', 'payment', 'shipping_address', 'shipping'), 'order');
 
 	$data = array_merge($customInfo, $data);
-	print_r($data);
 
         if ($version < 152) {
             $order_id = $this->model_checkout_order->create($data);
@@ -1365,6 +1364,7 @@ curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
 $out = curl_exec($curl);
 curl_close($curl);
+        print_r($data);
     	return $order_id;
     }
 
