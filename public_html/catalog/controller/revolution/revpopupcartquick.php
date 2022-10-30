@@ -485,6 +485,8 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
 			$this->db->query("UPDATE `" . DB_PREFIX . "order` SET order_status_id = '" . (int)$order_status_id . "', date_modified = NOW() WHERE order_id = '" . $order_id . "'");
 
 			$this->cart->clear();
+
+			print_r($order_data);
 			
 			$json['output'] = $this->language->get('text_success_order');
 		}
