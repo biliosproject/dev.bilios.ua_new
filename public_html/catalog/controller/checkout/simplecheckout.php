@@ -1187,6 +1187,8 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
                     'tax'        => $this->tax->getTax($product['price'], $product['tax_class_id']),
                     'reward'     => $product['reward']
                 );
+                print_r("TUETO")
+                print_r($product)
             }
 
             // Gift Voucher
