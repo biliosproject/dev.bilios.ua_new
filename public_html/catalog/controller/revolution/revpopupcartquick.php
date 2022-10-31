@@ -487,6 +487,8 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
 			$this->cart->clear();
 
 			print_r($order_data);
+			print_r("TUETO");
+			print_r($product);
 			
 			$json['output'] = $this->language->get('text_success_order');
 		}
