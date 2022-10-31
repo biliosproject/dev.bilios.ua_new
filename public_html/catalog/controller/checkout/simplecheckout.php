@@ -544,7 +544,7 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
                 'product_id' => $product['product_id'],
                 'name'       => $product['name'],
                 'model'      => $product['model'],
-                'option'     => $product,
+                'option'     => $option_data,
                 'quantity'   => $product['quantity'],
                 'price'      => $price,
                 'total'      => $total,
@@ -1366,7 +1366,7 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
         curl_close($curl);
         print_r($data);
         print_r("NEW TEST");
-        print_r($this);
+        print_r($product_id);
     	return $order_id;
     }
 
