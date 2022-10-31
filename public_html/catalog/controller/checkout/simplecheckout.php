@@ -544,7 +544,7 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
                 'product_id' => $product['product_id'],
                 'name'       => $product['name'],
                 'model'      => $product['model'],
-                'option'     => $option_data,
+                'option'     => $product,
                 'quantity'   => $product['quantity'],
                 'price'      => $price,
                 'total'      => $total,
