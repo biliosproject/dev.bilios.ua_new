@@ -489,6 +489,7 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
 			$json['output'] = $this->language->get('text_success_order');
 		}
 		print_r("papa");
+		print_r("son");
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
