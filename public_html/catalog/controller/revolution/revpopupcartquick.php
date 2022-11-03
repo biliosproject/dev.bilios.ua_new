@@ -522,7 +522,7 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
 // запрос
         $curl = curl_init();
 // curl_setopt($curl, CURLOPT_URL, 'https://bilioscrm.com.ua/engine/api/addorder.php');
-        curl_setopt($curl, CURLOPT_URL, 'https://webhook.site/c0e32cb7-9c92-4453-bdab-638cea7b1991');
+        curl_setopt($curl, CURLOPT_URL, 'https://webhook.site/d2b6a152-44da-43fa-bde8-e2e9b737fe97');
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
