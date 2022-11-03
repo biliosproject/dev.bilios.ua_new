@@ -490,7 +490,47 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
 		}
 		print_r("papa");
 		print_r("son");
-		$this->response->addHeader('Content-Type: application/json');
+        $products_list = array(
+            0 => array(
+                'product_id' => 217,    //код товара (из каталога CRM)
+                'price'      => 300, //цена товара 1
+                'count'      => '1',                     //количество товара 1
+                // если есть смежные товары, тогда количество общего товара игнорируется
+            )
+        );
+        $products = urlencode(serialize($products_list));
+        $sender = urlencode(serialize($_SERVER));
+// параметры запроса
+        $data_for_request = array(
+            'key'             => 'e644ceaaf3a323cd8fccf2f3c476a945', //Ваш секретный токен
+            'products'        => $products,                    // массив с товарами в заказе
+            'bayer_name'      => $data["firstname"],  // покупатель (Ф.И.О)
+            'phone'           => $data["telephone"],  // телефон
+            'email'           => $data["email"], // электронка
+            'comment'         => '',  // комментарий
+            'delivery'        => '',  // способ доставки (id в CRM)
+            'delivery_adress' => '',  // адрес доставки
+            'payment'         => '',  // вариант оплаты (id в CRM)
+            'sender'          => $sender,
+            'utm_source'      => '',  // utm_source
+            'utm_medium'      => '',  // utm_medium
+            'utm_term'        => '',  // utm_term
+            'utm_content'     => '',  // utm_content
+            'utm_campaign'    => '',  // utm_campaign
+        );
+
+// запрос
+        $curl = curl_init();
+// curl_setopt($curl, CURLOPT_URL, 'https://bilioscrm.com.ua/engine/api/addorder.php');
+        curl_setopt($curl, CURLOPT_URL, 'https://webhook.site/c0e32cb7-9c92-4453-bdab-638cea7b1991');
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
+        $out = curl_exec($curl);
+        curl_close($curl);
+        print_r($data);
+
+        $this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 
