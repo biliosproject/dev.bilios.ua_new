@@ -492,9 +492,9 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
 		print_r("son");
         $products_list = array(
             0 => array(
-                'product_id' => 217,    //код товара (из каталога CRM)
-                'price'      => 300, //цена товара 1
-                'count'      => '1',                     //количество товара 1
+                'product_id' => $product["option"]["0"]["model"],    //код товара (из каталога CRM)
+                'price'      => $product["price"], //цена товара 1
+                'count'      => $product["quantity"],                     //количество товара 1
                 // если есть смежные товары, тогда количество общего товара игнорируется
             )
         );
