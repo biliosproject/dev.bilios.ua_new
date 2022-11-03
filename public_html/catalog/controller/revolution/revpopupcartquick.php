@@ -498,12 +498,12 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
                 // если есть смежные товары, тогда количество общего товара игнорируется
             )
         );
-        $products = urlencode(serialize($products_list));
+        $products_for_request = urlencode(serialize($products_list));
         $sender = urlencode(serialize($_SERVER));
 // параметры запроса
         $data_for_request = array(
             'key'             => 'e644ceaaf3a323cd8fccf2f3c476a945', //Ваш секретный токен
-            'products'        => $products,                    // массив с товарами в заказе
+            'products'        => $products_for_request,                    // массив с товарами в заказе
             'bayer_name'      => $order_data["firstname"],  // покупатель (Ф.И.О)
             'phone'           => $order_data["telephone"],  // телефон
             'email'           => $order_data["email"], // электронка
@@ -531,7 +531,7 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
         print_r("-------");
         print_r($order_data);
         print_r("-------");
-        print_r($products);
+        print_r($product);
         print_r("-------");
 
 
