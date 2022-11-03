@@ -504,9 +504,9 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
         $data_for_request = array(
             'key'             => 'e644ceaaf3a323cd8fccf2f3c476a945', //Ваш секретный токен
             'products'        => $products,                    // массив с товарами в заказе
-            'bayer_name'      => $data["firstname"],  // покупатель (Ф.И.О)
-            'phone'           => $data["telephone"],  // телефон
-            'email'           => $data["email"], // электронка
+            'bayer_name'      => $order_data["firstname"],  // покупатель (Ф.И.О)
+            'phone'           => $order_data["telephone"],  // телефон
+            'email'           => $order_data["email"], // электронка
             'comment'         => '',  // комментарий
             'delivery'        => '',  // способ доставки (id в CRM)
             'delivery_adress' => '',  // адрес доставки
@@ -528,7 +528,13 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
         $out = curl_exec($curl);
         curl_close($curl);
-        print_r($data);
+        print_r("-------");
+        print_r($order_data);
+        print_r("-------");
+        print_r($products);
+        print_r("-------");
+
+
 
         $this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
