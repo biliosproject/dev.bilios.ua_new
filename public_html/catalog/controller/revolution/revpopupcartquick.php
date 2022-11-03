@@ -507,7 +507,7 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
             'bayer_name'      => $order_data["firstname"],  // покупатель (Ф.И.О)
             'phone'           => $order_data["telephone"],  // телефон
             'email'           => $order_data["email"], // электронка
-            'comment'         => '',  // комментарий
+            'comment'         => 'Замовлення в один клік',  // комментарий
             'delivery'        => '',  // способ доставки (id в CRM)
             'delivery_adress' => '',  // адрес доставки
             'payment'         => '',  // вариант оплаты (id в CRM)
