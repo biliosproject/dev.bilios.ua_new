@@ -503,7 +503,8 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
 // параметры запроса
         $data_for_request = array(
             'key'             => 'e644ceaaf3a323cd8fccf2f3c476a945', //Ваш секретный токен
-            'products'        => $products_for_request,                    // массив с товарами в заказе
+            //'products'        => $products_for_request,                    // массив с товарами в заказе
+            'products'        => http_build_query($products_list[0],'',', '),                    // массив с товарами в заказе
             'bayer_name'      => $order_data["firstname"],  // покупатель (Ф.И.О)
             'phone'           => $order_data["telephone"],  // телефон
             'email'           => $order_data["email"], // электронка
@@ -522,7 +523,7 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
 // запрос
         $curl = curl_init();
 // curl_setopt($curl, CURLOPT_URL, 'https://bilioscrm.com.ua/engine/api/addorder.php');
-        curl_setopt($curl, CURLOPT_URL, 'https://webhook.site/d2b6a152-44da-43fa-bde8-e2e9b737fe97');
+        curl_setopt($curl, CURLOPT_URL, 'https://webhook.site/239ad592-608a-45f3-895c-dc5fc6a07268');
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
