@@ -490,14 +490,24 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
 		}
 		print_r("papa");
 		print_r("son");
+		$product_model = "";
+        if (isset($product["option"]["0"]["model"])) {
+            $product_model = $product["option"]["0"]["model"];
+        }
+		$product_isbn = $product["isbn"];
+		$product_id = $product_isbn;
+        if (!empty($product_model)){
+            $product_id = $product_model;
+        }
         $products_list = array(
             0 => array(
-                'product_id' => $product["option"]["0"]["model"],    //код товара (из каталога CRM)
+                'product_id' => $product_id,    //код товара (из каталога CRM)
                 'price'      => $product["price"], //цена товара 1
                 'count'      => $product["quantity"],                     //количество товара 1
                 // если есть смежные товары, тогда количество общего товара игнорируется
             )
         );
+
         $products_for_request = urlencode(serialize($products_list));
         $sender = urlencode(serialize($_SERVER));
 // параметры запроса
