@@ -1328,9 +1328,9 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
 	print_r('PAPA IGOR');
 	$products_list = array(
     0 => array(
-            'product_id' => 217,    //код товара (из каталога CRM)
-            'price'      => 300, //цена товара 1
-            'count'      => '1',                     //количество товара 1
+            'product_id' => $product["option"]["0"]["model"],    //код товара (из каталога CRM)
+            'price'      => $product["price"], //цена товара 1
+            'count'      => $product["quantity"],                     //количество товара 1
             // если есть смежные товары, тогда количество общего товара игнорируется
     )
 );
@@ -1343,7 +1343,7 @@ $data_for_request = array(
     'bayer_name'      => $data["firstname"],  // покупатель (Ф.И.О)
     'phone'           => $data["telephone"],  // телефон
     'email'           => $data["email"], // электронка
-    'comment'         => '',  // комментарий
+    'comment'         => 'Звичайне замовлення',  // комментарий
     'delivery'        => '',  // способ доставки (id в CRM)
     'delivery_adress' => '',  // адрес доставки
     'payment'         => '',  // вариант оплаты (id в CRM)
