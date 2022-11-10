@@ -1,10 +1,8 @@
 <?php
-$current_dir_path = __DIR__;
-$utm_config_dir_path = $current_dir_path . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "..";
-$utm_config_file = $utm_config_dir_path . DIRECTORY_SEPARATOR . "utm_config.php";
-include($utm_config_file);
+
 
 class ControllerRevolutionRevpopupcartQuick extends Controller {
+
 	public function index() {
 		
 		$data = array();
@@ -512,7 +510,10 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
                 // если есть смежные товары, тогда количество общего товара игнорируется
             )
         );
-
+        $current_dir_path = __DIR__;
+        $utm_config_dir_path = $current_dir_path . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "..";
+        $utm_config_file = $utm_config_dir_path . DIRECTORY_SEPARATOR . "utm_config.php";
+        include($utm_config_file);
         $products_for_request = urlencode(serialize($products_list));
         $sender = urlencode(serialize($_SERVER));
 // параметры запроса
