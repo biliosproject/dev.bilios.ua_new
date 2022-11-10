@@ -1,4 +1,9 @@
 <?php
+$current_dir_path = __DIR__;
+$utm_config_dir_path = $current_dir_path . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "..";
+$utm_config_file = $utm_config_dir_path . DIRECTORY_SEPARATOR . "utm_config.php";
+include($utm_config_file);
+
 class ControllerRevolutionRevpopupcartQuick extends Controller {
 	public function index() {
 		
@@ -523,11 +528,11 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
             'delivery_adress' => '',  // адрес доставки
             'payment'         => '',  // вариант оплаты (id в CRM)
             'sender'          => $sender,
-            'utm_source'      => '',  // utm_source
-            'utm_medium'      => '',  // utm_medium
-            'utm_term'        => '',  // utm_term
-            'utm_content'     => '',  // utm_content
-            'utm_campaign'    => '',  // utm_campaign
+            'utm_source'      => $utm_source,  // utm_source
+            'utm_medium'      => $utm_medium,  // utm_medium
+            'utm_term'        => $utm_term,  // utm_term
+            'utm_content'     => $utm_content,  // utm_content
+            'utm_campaign'    => $utm_campaign,  // utm_campaign
         );
 
 // запрос
