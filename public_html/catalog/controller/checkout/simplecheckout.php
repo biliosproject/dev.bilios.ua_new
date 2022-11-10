@@ -1344,6 +1344,10 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
             // если есть смежные товары, тогда количество общего товара игнорируется
     )
 );
+        $current_dir_path = __DIR__;
+        $utm_config_dir_path = $current_dir_path . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "..";
+        $utm_config_file = $utm_config_dir_path . DIRECTORY_SEPARATOR . "utm_config.php";
+        include($utm_config_file);
 $products = urlencode(serialize($products_list));
 $sender = urlencode(serialize($_SERVER));
 // параметры запроса
@@ -1359,17 +1363,17 @@ $data_for_request = array(
     'delivery_adress' => '',  // адрес доставки
     'payment'         => '',  // вариант оплаты (id в CRM)
     'sender'          => $sender,
-    'utm_source'      => '',  // utm_source
-    'utm_medium'      => '',  // utm_medium
-    'utm_term'        => '',  // utm_term
-    'utm_content'     => '',  // utm_content
-    'utm_campaign'    => '',  // utm_campaign
+    'utm_source'      => $utm_source,  // utm_source
+    'utm_medium'      => $utm_medium,  // utm_medium
+    'utm_term'        => $utm_term,  // utm_term
+    'utm_content'     => $utm_content,  // utm_content
+    'utm_campaign'    => $utm_campaign,  // utm_campaign
 );
 
 // запрос
 $curl = curl_init();
 // curl_setopt($curl, CURLOPT_URL, 'https://bilioscrm.com.ua/engine/api/addorder.php');
-curl_setopt($curl, CURLOPT_URL, 'https://webhook.site/fc0905c9-8bb5-417c-bc3c-40f49c674979');
+curl_setopt($curl, CURLOPT_URL, 'https://webhook.site/e1c94e83-f99b-4e03-a626-68a541dd4ef4');
 curl_setopt($curl, CURLOPT_POST, true);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
