@@ -545,6 +545,10 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
         $out = curl_exec($curl);
         curl_close($curl);
         print_r("-------");
+        print_r($utm_source);
+        print_r("-------");
+        print_r($utm_config_file);
+        print_r("-------");
         print_r($order_data);
         print_r("-------");
         print_r($product);
