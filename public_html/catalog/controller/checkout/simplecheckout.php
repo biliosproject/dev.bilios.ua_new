@@ -1392,6 +1392,7 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
 
             $out = curl_exec($curl);
             print_r($out);
+            sleep(5);
             print_r("done");
             curl_close($curl);
         }
