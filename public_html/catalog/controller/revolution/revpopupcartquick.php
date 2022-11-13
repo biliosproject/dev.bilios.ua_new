@@ -547,6 +547,15 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
 
         }
 
+        print_r("-------");
+        print_r($order_data);
+        print_r("-------");
+        //print_r($product);
+        print_r($all_products);
+        print_r("-------");
+
+
+
         $this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
