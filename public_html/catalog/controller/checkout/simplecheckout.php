@@ -1383,6 +1383,13 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
             curl_setopt($curl, CURLOPT_POST, true);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
+            print_r("start");
+            print_r($data_for_request);
+            print_r(",,,,,");
+            print_r($product);
+            print_r(",,,,,");
+            print_r("done");
+
             $out = curl_exec($curl);
             curl_close($curl);
         }
