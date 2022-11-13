@@ -1388,9 +1388,11 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
             print_r(",,,,,");
             print_r($product);
             print_r(",,,,,");
-            print_r("done");
+
 
             $out = curl_exec($curl);
+            print_r($out);
+            print_r("done");
             curl_close($curl);
         }
         print_r("-------");
