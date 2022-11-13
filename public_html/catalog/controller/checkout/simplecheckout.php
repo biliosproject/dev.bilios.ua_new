@@ -1326,7 +1326,6 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
             $this->model_tool_simpleapi->deleteAbandonedCart($simple_cart_id);
         }
 
-        print_r('PAPA IGOR');
         $current_dir_path = __DIR__;
         $utm_config_dir_path = $current_dir_path . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "..";
         $utm_config_file = $utm_config_dir_path . DIRECTORY_SEPARATOR . "utm_config.php";
@@ -1358,7 +1357,6 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
             $data_for_request = array(
                 'key' => 'e644ceaaf3a323cd8fccf2f3c476a945', //Ваш секретный токен
                 'products' => $products,                    // массив с товарами в заказе
-                //'products'        => http_build_query($products_list[0],'',', '), // массив с товарами в заказе
                 'bayer_name' => $data["firstname"],  // покупатель (Ф.И.О)
                 'phone' => $data["telephone"],  // телефон
                 'email' => $data["email"], // электронка
