@@ -491,65 +491,62 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
 			
 			$json['output'] = $this->language->get('text_success_order');
 		}
-		print_r("papa");
-		print_r("son");
-		$product_model = "";
-        if (isset($product["option"]["0"]["model"])) {
-            $product_model = $product["option"]["0"]["model"];
-        }
-		$product_isbn = $product["isbn"];
-		$product_id = $product_isbn;
-        if (!empty($product_model)){
-            $product_id = $product_model;
-        }
-        $products_list = array(
-            0 => array(
-                'product_id' => $product_id,    //код товара (из каталога CRM)
-                'price'      => $product["price"], //цена товара 1
-                'count'      => $product["quantity"],                     //количество товара 1
-                // если есть смежные товары, тогда количество общего товара игнорируется
-            )
-        );
         $current_dir_path = __DIR__;
         $utm_config_dir_path = $current_dir_path . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "..";
         $utm_config_file = $utm_config_dir_path . DIRECTORY_SEPARATOR . "utm_config.php";
         include($utm_config_file);
-        $products_for_request = urlencode(serialize($products_list));
-        $sender = urlencode(serialize($_SERVER));
-// параметры запроса
-        $data_for_request = array(
-            'key'             => 'e644ceaaf3a323cd8fccf2f3c476a945', //Ваш секретный токен
-            'products'        => $products_for_request,                    // массив с товарами в заказе
-            //'products'        => http_build_query($products_list[0],'',', '),                    // массив с товарами в заказе
-            'bayer_name'      => $order_data["firstname"],  // покупатель (Ф.И.О)
-            'phone'           => $order_data["telephone"],  // телефон
-            'email'           => $order_data["email"], // электронка
-            'comment'         => 'Замовлення в один клік',  // комментарий
-            'delivery'        => '',  // способ доставки (id в CRM)
-            'delivery_adress' => '',  // адрес доставки
-            'payment'         => '',  // вариант оплаты (id в CRM)
-            'sender'          => $sender,
-            'utm_source'      => $utm_source,  // utm_source
-            'utm_medium'      => $utm_medium,  // utm_medium
-            'utm_term'        => $utm_term,  // utm_term
-            'utm_content'     => $utm_content,  // utm_content
-            'utm_campaign'    => $utm_campaign,  // utm_campaign
-        );
+        foreach ($all_products as &$product) {
 
-// запрос
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, 'https://dev.bilios.com.ua/engine/api/addorder.php');
-        //curl_setopt($curl, CURLOPT_URL, 'https://bilioscrm.com.ua/engine/api/addorder.php');
-        //curl_setopt($curl, CURLOPT_URL, 'https://webhook.site/e1c94e83-f99b-4e03-a626-68a541dd4ef4');
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
-        $out = curl_exec($curl);
-        curl_close($curl);
-        print_r("-------");
-        print_r($utm_source);
-        print_r("-------");
-        print_r($utm_config_file);
+            $product_model = "";
+            if (isset($product["option"]["0"]["model"])) {
+                $product_model = $product["option"]["0"]["model"];
+            }
+            $product_isbn = $product["isbn"];
+            $product_id = $product_isbn;
+            if (!empty($product_model)){
+                $product_id = $product_model;
+            }
+            $products_list = array(
+                0 => array(
+                    'product_id' => $product_id,    //код товара (из каталога CRM)
+                    'price'      => $product["price"], //цена товара 1
+                    'count'      => $product["quantity"],                     //количество товара 1
+                    // если есть смежные товары, тогда количество общего товара игнорируется
+                )
+            );
+
+            $products_for_request = urlencode(serialize($products_list));
+            $sender = urlencode(serialize($_SERVER));
+            // параметры запроса
+            $data_for_request = array(
+                'key'             => 'e644ceaaf3a323cd8fccf2f3c476a945', //Ваш секретный токен
+                'products'        => $products_for_request,                    // массив с товарами в заказе
+                'bayer_name'      => $order_data["firstname"],  // покупатель (Ф.И.О)
+                'phone'           => $order_data["telephone"],  // телефон
+                'email'           => $order_data["email"], // электронка
+                'comment'         => 'Замовлення в один клік',  // комментарий
+                'delivery'        => '',  // способ доставки (id в CRM)
+                'delivery_adress' => '',  // адрес доставки
+                'payment'         => '',  // вариант оплаты (id в CRM)
+                'sender'          => $sender,
+                'utm_source'      => $utm_source,  // utm_source
+                'utm_medium'      => $utm_medium,  // utm_medium
+                'utm_term'        => $utm_term,  // utm_term
+                'utm_content'     => $utm_content,  // utm_content
+                'utm_campaign'    => $utm_campaign,  // utm_campaign
+            );
+            $curl = curl_init();
+            curl_setopt($curl, CURLOPT_URL, 'https://dev.bilios.com.ua/engine/api/addorder.php');
+            //curl_setopt($curl, CURLOPT_URL, 'https://bilioscrm.com.ua/engine/api/addorder.php');
+            //curl_setopt($curl, CURLOPT_URL, 'https://webhook.site/e1c94e83-f99b-4e03-a626-68a541dd4ef4');
+            curl_setopt($curl, CURLOPT_POST, true);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
+            $out = curl_exec($curl);
+            curl_close($curl);
+
+        }
+
         print_r("-------");
         print_r($order_data);
         print_r("-------");
