@@ -848,27 +848,28 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
         return $stateChanged;
     }
 
-    private function order() {
+    private function order()
+    {
         $this->simplecheckout->clearOrder();
 
-        $customer_info    = $this->session->data['simple']['customer'];
-        $payment_address  = $this->session->data['simple']['payment_address'];
+        $customer_info = $this->session->data['simple']['customer'];
+        $payment_address = $this->session->data['simple']['payment_address'];
         $shipping_address = $this->session->data['simple']['shipping_address'];
 
-        $comment          = $this->simplecheckout->getComment();
-        $version          = $this->simplecheckout->getOpencartVersion();
-        
-        $payment_method   = array();
-        $shipping_method  = array();
+        $comment = $this->simplecheckout->getComment();
+        $version = $this->simplecheckout->getOpencartVersion();
+
+        $payment_method = array();
+        $shipping_method = array();
 
         if ($this->simplecheckout->getSettingValue('clearUnusedFields')) {
             $shipping_address_fields = $this->simplecheckout->getFieldsInBlock('shipping_address');
-            
+
             foreach ($shipping_address as $field => $value) {
                 if (in_array($field, array('custom_field', 'address_id'))) {
                     continue;
                 }
-                
+
                 if (!in_array($field, $shipping_address_fields)) {
                     $shipping_address[$field] = '';
                 }
@@ -891,8 +892,8 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
             if (!empty($emptyEmail)) {
                 $customer_info['email'] = $emptyEmail;
             } else {
-                $customer_info['email'] = 'empty'.time().'@localhost.net';
-            }            
+                $customer_info['email'] = 'empty' . time() . '@localhost.net';
+            }
         }
 
         $totals = array();
@@ -901,8 +902,8 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
 
         $total_data = array(
             'totals' => &$totals,
-            'taxes'  => &$taxes,
-            'total'  => &$total
+            'taxes' => &$taxes,
+            'total' => &$total
         );
 
         $sort_order = array();
@@ -922,14 +923,14 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
                 $sort_order[$key] = $this->config->get($result['code'] . '_sort_order');
             } else {
                 $sort_order[$key] = $this->config->get('total_' . $result['code'] . '_sort_order');
-            }                
+            }
         }
 
         array_multisort($sort_order, SORT_ASC, $results);
 
         $shipping_cost = isset($shipping_method['cost']) ? $shipping_method['cost'] : 0;
         $skip_zero_cost_shipping = $this->simplecheckout->getSettingValue('skipZeroCostShipping', 'cart');
-        
+
         foreach ($results as $result) {
             if ($version < 300) {
                 $status = $this->config->get($result['code'] . '_status');
@@ -980,30 +981,30 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
             $data['store_url'] = HTTP_SERVER;
         }
 
-        $data['customer_id']            = $customer_info['customer_id'];
-        $data['customer_group_id']      = $customer_info['customer_group_id'];
-        $data['firstname']              = $customer_info['firstname'];
-        $data['lastname']               = $customer_info['lastname'];
-        $data['email']                  = $customer_info['email'];
-        $data['telephone']              = $customer_info['telephone'];
-        $data['fax']                    = !empty($customer_info['fax']) ? $customer_info['fax'] : '';
-        $data['custom_field']           = isset($customer_info['custom_field']) ? $customer_info['custom_field'] : array();
+        $data['customer_id'] = $customer_info['customer_id'];
+        $data['customer_group_id'] = $customer_info['customer_group_id'];
+        $data['firstname'] = $customer_info['firstname'];
+        $data['lastname'] = $customer_info['lastname'];
+        $data['email'] = $customer_info['email'];
+        $data['telephone'] = $customer_info['telephone'];
+        $data['fax'] = !empty($customer_info['fax']) ? $customer_info['fax'] : '';
+        $data['custom_field'] = isset($customer_info['custom_field']) ? $customer_info['custom_field'] : array();
 
-        $data['payment_firstname']      = $payment_address['firstname'];
-        $data['payment_lastname']       = $payment_address['lastname'];
-        $data['payment_company']        = $payment_address['company'];
-        $data['payment_address_1']      = $payment_address['address_1'];
-        $data['payment_address_2']      = $payment_address['address_2'];
-        $data['payment_city']           = $payment_address['city'];
-        $data['payment_postcode']       = $payment_address['postcode'];
-        $data['payment_zone']           = $payment_address['zone'];
-        $data['payment_zone_id']        = $payment_address['zone_id'];
-        $data['payment_country']        = $payment_address['country'];
-        $data['payment_country_id']     = $payment_address['country_id'];
+        $data['payment_firstname'] = $payment_address['firstname'];
+        $data['payment_lastname'] = $payment_address['lastname'];
+        $data['payment_company'] = $payment_address['company'];
+        $data['payment_address_1'] = $payment_address['address_1'];
+        $data['payment_address_2'] = $payment_address['address_2'];
+        $data['payment_city'] = $payment_address['city'];
+        $data['payment_postcode'] = $payment_address['postcode'];
+        $data['payment_zone'] = $payment_address['zone'];
+        $data['payment_zone_id'] = $payment_address['zone_id'];
+        $data['payment_country'] = $payment_address['country'];
+        $data['payment_country_id'] = $payment_address['country_id'];
         $data['payment_address_format'] = $payment_address['address_format'];
-        $data['payment_company_id']     = isset($payment_address['company_id']) ? $payment_address['company_id'] : '';
-        $data['payment_tax_id']         = isset($payment_address['tax_id']) ? $payment_address['tax_id'] : '';
-        $data['payment_custom_field']   = isset($payment_address['custom_field']) ? $payment_address['custom_field'] : array();
+        $data['payment_company_id'] = isset($payment_address['company_id']) ? $payment_address['company_id'] : '';
+        $data['payment_tax_id'] = isset($payment_address['tax_id']) ? $payment_address['tax_id'] : '';
+        $data['payment_custom_field'] = isset($payment_address['custom_field']) ? $payment_address['custom_field'] : array();
 
         if (isset($payment_method['title'])) {
             $data['payment_method'] = $payment_method['title'];
@@ -1018,19 +1019,19 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
         }
 
         if ($this->simplecheckout->hasShipping()) {
-            $data['shipping_firstname']      = $shipping_address['firstname'];
-            $data['shipping_lastname']       = $shipping_address['lastname'];
-            $data['shipping_company']        = $shipping_address['company'];
-            $data['shipping_address_1']      = $shipping_address['address_1'];
-            $data['shipping_address_2']      = $shipping_address['address_2'];
-            $data['shipping_city']           = $shipping_address['city'];
-            $data['shipping_postcode']       = $shipping_address['postcode'];
-            $data['shipping_zone']           = $shipping_address['zone'];
-            $data['shipping_zone_id']        = $shipping_address['zone_id'];
-            $data['shipping_country']        = $shipping_address['country'];
-            $data['shipping_country_id']     = $shipping_address['country_id'];
+            $data['shipping_firstname'] = $shipping_address['firstname'];
+            $data['shipping_lastname'] = $shipping_address['lastname'];
+            $data['shipping_company'] = $shipping_address['company'];
+            $data['shipping_address_1'] = $shipping_address['address_1'];
+            $data['shipping_address_2'] = $shipping_address['address_2'];
+            $data['shipping_city'] = $shipping_address['city'];
+            $data['shipping_postcode'] = $shipping_address['postcode'];
+            $data['shipping_zone'] = $shipping_address['zone'];
+            $data['shipping_zone_id'] = $shipping_address['zone_id'];
+            $data['shipping_country'] = $shipping_address['country'];
+            $data['shipping_country_id'] = $shipping_address['country_id'];
             $data['shipping_address_format'] = $shipping_address['address_format'];
-            $data['shipping_custom_field']   = isset($shipping_address['custom_field']) ? $shipping_address['custom_field'] : array();
+            $data['shipping_custom_field'] = isset($shipping_address['custom_field']) ? $shipping_address['custom_field'] : array();
 
             if (isset($shipping_method['title'])) {
                 $data['shipping_method'] = $shipping_method['title'];
@@ -1044,31 +1045,31 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
                 $data['shipping_code'] = '';
             }
         } else {
-            $data['shipping_firstname']      = '';
-            $data['shipping_lastname']       = '';
-            $data['shipping_company']        = '';
-            $data['shipping_address_1']      = '';
-            $data['shipping_address_2']      = '';
-            $data['shipping_city']           = '';
-            $data['shipping_postcode']       = '';
-            $data['shipping_zone']           = '';
-            $data['shipping_zone_id']        = '';
-            $data['shipping_country']        = '';
-            $data['shipping_country_id']     = '';
+            $data['shipping_firstname'] = '';
+            $data['shipping_lastname'] = '';
+            $data['shipping_company'] = '';
+            $data['shipping_address_1'] = '';
+            $data['shipping_address_2'] = '';
+            $data['shipping_city'] = '';
+            $data['shipping_postcode'] = '';
+            $data['shipping_zone'] = '';
+            $data['shipping_zone_id'] = '';
+            $data['shipping_country'] = '';
+            $data['shipping_country_id'] = '';
             $data['shipping_address_format'] = '';
-            $data['shipping_method']         = '';
-            $data['shipping_code']           = '';
-            $data['shipping_custom_field']   = array();
+            $data['shipping_method'] = '';
+            $data['shipping_code'] = '';
+            $data['shipping_custom_field'] = array();
         }
 
         $data['payment_address_format'] = $this->simplecheckout->getAddressFormat($data, 'payment');
         $data['shipping_address_format'] = $this->simplecheckout->getAddressFormat($data, 'shipping');
 
         $product_data = array();
-
+        $all_products = $this->cart->getProducts();
         if ($version < 152) {
 
-            if (method_exists($this->tax,'setZone')) {
+            if (method_exists($this->tax, 'setZone')) {
                 if ($this->simplecheckout->hasShipping()) {
                     $this->tax->setZone($data['shipping_country_id'], $data['shipping_zone_id']);
                 } else {
@@ -1078,50 +1079,50 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
 
             $this->loadLibrary('encryption');
 
-            foreach ($this->cart->getProducts() as $product) {
+            foreach ($all_products as $product) {
                 $option_data = array();
 
                 foreach ($product['option'] as $option) {
                     if ($option['type'] != 'file') {
                         $option_data[] = array(
-                            'product_option_id'       => $option['product_option_id'],
+                            'product_option_id' => $option['product_option_id'],
                             'product_option_value_id' => $option['product_option_value_id'],
-                            'product_option_id'       => $option['product_option_id'],
+                            'product_option_id' => $option['product_option_id'],
                             'product_option_value_id' => $option['product_option_value_id'],
-                            'option_id'               => $option['option_id'],
-                            'option_value_id'         => $option['option_value_id'],
-                            'name'                    => $option['name'],
-                            'value'                   => $option['option_value'],
-                            'type'                    => $option['type']
+                            'option_id' => $option['option_id'],
+                            'option_value_id' => $option['option_value_id'],
+                            'name' => $option['name'],
+                            'value' => $option['option_value'],
+                            'type' => $option['type']
                         );
                     } else {
                         $encryption = new Encryption($this->config->get('config_encryption'));
 
                         $option_data[] = array(
-                            'product_option_id'       => $option['product_option_id'],
+                            'product_option_id' => $option['product_option_id'],
                             'product_option_value_id' => $option['product_option_value_id'],
-                            'product_option_id'       => $option['product_option_id'],
+                            'product_option_id' => $option['product_option_id'],
                             'product_option_value_id' => $option['product_option_value_id'],
-                            'option_id'               => $option['option_id'],
-                            'option_value_id'         => $option['option_value_id'],
-                            'name'                    => $option['name'],
-                            'value'                   => $encryption->decrypt($option['option_value']),
-                            'type'                    => $option['type']
+                            'option_id' => $option['option_id'],
+                            'option_value_id' => $option['option_value_id'],
+                            'name' => $option['name'],
+                            'value' => $encryption->decrypt($option['option_value']),
+                            'type' => $option['type']
                         );
                     }
                 }
 
                 $product_data[] = array(
                     'product_id' => $product['product_id'],
-                    'name'       => $product['name'],
-                    'model'      => $product['model'],
-                    'option'     => $option_data,
-                    'download'   => $product['download'],
-                    'quantity'   => $product['quantity'],
-                    'subtract'   => $product['subtract'],
-                    'price'      => $product['price'],
-                    'total'      => $product['total'],
-                    'tax'        => method_exists($this->tax,'getRate') ? $this->tax->getRate($product['tax_class_id']) : $this->tax->getTax($product['price'], $product['tax_class_id'])
+                    'name' => $product['name'],
+                    'model' => $product['model'],
+                    'option' => $option_data,
+                    'download' => $product['download'],
+                    'quantity' => $product['quantity'],
+                    'subtract' => $product['subtract'],
+                    'price' => $product['price'],
+                    'total' => $product['total'],
+                    'tax' => method_exists($this->tax, 'getRate') ? $this->tax->getRate($product['tax_class_id']) : $this->tax->getTax($product['price'], $product['tax_class_id'])
                 );
             }
 
@@ -1130,15 +1131,15 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
                 foreach ($this->session->data['vouchers'] as $voucher) {
                     $product_data[] = array(
                         'product_id' => 0,
-                        'name'       => $voucher['description'],
-                        'model'      => '',
-                        'option'     => array(),
-                        'download'   => array(),
-                        'quantity'   => 1,
-                        'subtract'   => false,
-                        'price'      => $voucher['amount'],
-                        'total'      => $voucher['amount'],
-                        'tax'        => 0
+                        'name' => $voucher['description'],
+                        'model' => '',
+                        'option' => array(),
+                        'download' => array(),
+                        'quantity' => 1,
+                        'subtract' => false,
+                        'price' => $voucher['amount'],
+                        'total' => $voucher['amount'],
+                        'tax' => 0
                     );
                 }
             }
@@ -1149,7 +1150,7 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
             $data['total'] = $total;
             $data['reward'] = $this->cart->getTotalRewardPoints();
         } elseif ($version >= 152) {
-            foreach ($this->cart->getProducts() as $product) {
+            foreach ($all_products as $product) {
                 $option_data = array();
 
                 foreach ($product['option'] as $option) {
@@ -1164,28 +1165,28 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
                     }
 
                     $option_data[] = array(
-                        'product_option_id'       => $option['product_option_id'],
+                        'product_option_id' => $option['product_option_id'],
                         'product_option_value_id' => $option['product_option_value_id'],
-                        'option_id'               => $option['option_id'],
-                        'option_value_id'         => $option['option_value_id'],
-                        'name'                    => $option['name'],
-                        'value'                   => $value,
-                        'type'                    => $option['type']
+                        'option_id' => $option['option_id'],
+                        'option_value_id' => $option['option_value_id'],
+                        'name' => $option['name'],
+                        'value' => $value,
+                        'type' => $option['type']
                     );
                 }
 
                 $product_data[] = array(
                     'product_id' => $product['product_id'],
-                    'name'       => $product['name'],
-                    'model'      => $product['model'],
-                    'option'     => $option_data,
-                    'download'   => $product['download'],
-                    'quantity'   => $product['quantity'],
-                    'subtract'   => $product['subtract'],
-                    'price'      => $product['price'],
-                    'total'      => $product['total'],
-                    'tax'        => $this->tax->getTax($product['price'], $product['tax_class_id']),
-                    'reward'     => $product['reward']
+                    'name' => $product['name'],
+                    'model' => $product['model'],
+                    'option' => $option_data,
+                    'download' => $product['download'],
+                    'quantity' => $product['quantity'],
+                    'subtract' => $product['subtract'],
+                    'price' => $product['price'],
+                    'total' => $product['total'],
+                    'tax' => $this->tax->getTax($product['price'], $product['tax_class_id']),
+                    'reward' => $product['reward']
                 );
             }
 
@@ -1195,15 +1196,15 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
             if (!empty($this->session->data['vouchers'])) {
                 foreach ($this->session->data['vouchers'] as $voucher) {
                     $voucher_data[] = array(
-                        'description'      => $voucher['description'],
-                        'code'             => substr(md5(rand()), 0, 10),
-                        'to_name'          => $voucher['to_name'],
-                        'to_email'         => $voucher['to_email'],
-                        'from_name'        => $voucher['from_name'],
-                        'from_email'       => $voucher['from_email'],
+                        'description' => $voucher['description'],
+                        'code' => substr(md5(rand()), 0, 10),
+                        'to_name' => $voucher['to_name'],
+                        'to_email' => $voucher['to_email'],
+                        'from_name' => $voucher['from_name'],
+                        'from_email' => $voucher['from_email'],
                         'voucher_theme_id' => $voucher['voucher_theme_id'],
-                        'message'          => $voucher['message'],
-                        'amount'           => $voucher['amount']
+                        'message' => $voucher['message'],
+                        'amount' => $voucher['amount']
 
                     );
                 }
@@ -1221,7 +1222,7 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
 
             if ($version < 300) {
                 $this->load->model('affiliate/affiliate');
-                
+
                 $affiliate_info = $this->model_affiliate_affiliate->getAffiliateByCode($this->request->cookie['tracking']);
             } else {
                 $this->load->model('account/customer');
@@ -1257,15 +1258,15 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
             $data['tracking'] = '';
         }
 
-        $data['language_id']    = $this->config->get('config_language_id');
+        $data['language_id'] = $this->config->get('config_language_id');
 
         if ($version < 220) {
-            $data['currency_id']    = $this->currency->getId();
-            $data['currency_code']  = $this->currency->getCode();
+            $data['currency_id'] = $this->currency->getId();
+            $data['currency_code'] = $this->currency->getCode();
             $data['currency_value'] = $this->currency->getValue($this->currency->getCode());
         } else {
-            $data['currency_id']    = $this->currency->getId($this->session->data['currency']);
-            $data['currency_code']  = $this->session->data['currency'];
+            $data['currency_id'] = $this->currency->getId($this->session->data['currency']);
+            $data['currency_code'] = $this->session->data['currency'];
             $data['currency_value'] = $this->currency->getValue($this->session->data['currency']);
         }
 
@@ -1273,7 +1274,7 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
 
         if (!empty($this->request->server['HTTP_X_FORWARDED_FOR'])) {
             $data['forwarded_ip'] = $this->request->server['HTTP_X_FORWARDED_FOR'];
-        } elseif(!empty($this->request->server['HTTP_CLIENT_IP'])) {
+        } elseif (!empty($this->request->server['HTTP_CLIENT_IP'])) {
             $data['forwarded_ip'] = $this->request->server['HTTP_CLIENT_IP'];
         } else {
             $data['forwarded_ip'] = '';
@@ -1297,7 +1298,7 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
 
         $customInfo = $this->simplecheckout->getCustomFields(array('customer', 'payment_address', 'payment', 'shipping_address', 'shipping'), 'order');
 
-	$data = array_merge($customInfo, $data);
+        $data = array_merge($customInfo, $data);
 
         if ($version < 152) {
             $order_id = $this->model_checkout_order->create($data);
@@ -1319,72 +1320,72 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
         $this->simplecheckout->saveCustomFields(array('customer', 'payment_address', 'payment', 'shipping_address', 'shipping'), 'order', $order_id);
 
         $simple_cart_id = !empty($this->session->data['simple_cart_id']) ? $this->session->data['simple_cart_id'] : 0;
-            
+
         if ($simple_cart_id) {
             $this->load->model('tool/simpleapi');
             $this->model_tool_simpleapi->deleteAbandonedCart($simple_cart_id);
-        }        
-    
-	print_r('PAPA IGOR');
-        $product_model = "";
-        if (isset($product["option"]["0"]["model"])) {
-            $product_model = $product["option"]["0"]["model"];
         }
-        $product_isbn = $product["isbn"];
-        $product_id = $product_isbn;
-        if (!empty($product_model)){
-            $product_id = $product_model;
-        }
-	$products_list = array(
-    0 => array(
-            //'product_id' => $product["option"]["0"]["model"],    //код товара (из каталога CRM)
-            'product_id' => $product_id,    //код товара (из каталога CRM)
-            'price'      => $product["price"], //цена товара 1
-            'count'      => $product["quantity"],                     //количество товара 1
-            // если есть смежные товары, тогда количество общего товара игнорируется
-    )
-);
+
         $current_dir_path = __DIR__;
         $utm_config_dir_path = $current_dir_path . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "..";
         $utm_config_file = $utm_config_dir_path . DIRECTORY_SEPARATOR . "utm_config.php";
         include($utm_config_file);
-$products = urlencode(serialize($products_list));
-$sender = urlencode(serialize($_SERVER));
-// параметры запроса
-$data_for_request = array(
-    'key'             => 'e644ceaaf3a323cd8fccf2f3c476a945', //Ваш секретный токен
-    'products'        => $products,                    // массив с товарами в заказе
-    //'products'        => http_build_query($products_list[0],'',', '), // массив с товарами в заказе
-    'bayer_name'      => $data["firstname"],  // покупатель (Ф.И.О)
-    'phone'           => $data["telephone"],  // телефон
-    'email'           => $data["email"], // электронка
-    'comment'         => 'Звичайне замовлення',  // комментарий
-    'delivery'        => '',  // способ доставки (id в CRM)
-    'delivery_adress' => '',  // адрес доставки
-    'payment'         => '',  // вариант оплаты (id в CRM)
-    'sender'          => $sender,
-    'utm_source'      => $utm_source,  // utm_source
-    'utm_medium'      => $utm_medium,  // utm_medium
-    'utm_term'        => $utm_term,  // utm_term
-    'utm_content'     => $utm_content,  // utm_content
-    'utm_campaign'    => $utm_campaign,  // utm_campaign
-);
 
-// запрос
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, 'https://dev.bilios.com.ua/engine/api/addorder.php');
-// curl_setopt($curl, CURLOPT_URL, 'https://bilioscrm.com.ua/engine/api/addorder.php');
-//curl_setopt($curl, CURLOPT_URL, 'https://webhook.site/e1c94e83-f99b-4e03-a626-68a541dd4ef4');
-curl_setopt($curl, CURLOPT_POST, true);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
-$out = curl_exec($curl);
-curl_close($curl);
-        print_r("-------");
-        print_r($product);
-        print_r("-------");
-        print_r($data);
-    	return $order_id;
+        foreach ($all_products as &$product) {
+
+            $product_model = "";
+            if (isset($product["option"]["0"]["model"])) {
+                $product_model = $product["option"]["0"]["model"];
+            }
+            $product_isbn = $product["isbn"];
+            $product_id = $product_isbn;
+            if (!empty($product_model)) {
+                $product_id = $product_model;
+            }
+            $products_list = array(
+                0 => array(
+                    //'product_id' => $product["option"]["0"]["model"],    //код товара (из каталога CRM)
+                    'product_id' => $product_id,    //код товара (из каталога CRM)
+                    'price' => $product["price"], //цена товара 1
+                    'count' => $product["quantity"],                     //количество товара 1
+                    // если есть смежные товары, тогда количество общего товара игнорируется
+                )
+            );
+
+            $products = urlencode(serialize($products_list));
+            $sender = urlencode(serialize($_SERVER));
+            // параметры запроса
+            $data_for_request = array(
+                'key' => 'e644ceaaf3a323cd8fccf2f3c476a945', //Ваш секретный токен
+                'products' => $products,                    // массив с товарами в заказе
+                //'products'        => http_build_query($products_list[0],'',', '), // массив с товарами в заказе
+                'bayer_name' => $data["firstname"],  // покупатель (Ф.И.О)
+                'phone' => $data["telephone"],  // телефон
+                'email' => $data["email"], // электронка
+                'comment' => 'Звичайне замовлення',  // комментарий
+                'delivery' => '',  // способ доставки (id в CRM)
+                'delivery_adress' => '',  // адрес доставки
+                'payment' => '',  // вариант оплаты (id в CRM)
+                'sender' => $sender,
+                'utm_source' => $utm_source,  // utm_source
+                'utm_medium' => $utm_medium,  // utm_medium
+                'utm_term' => $utm_term,  // utm_term
+                'utm_content' => $utm_content,  // utm_content
+                'utm_campaign' => $utm_campaign,  // utm_campaign
+            );
+
+            // запрос
+            $curl = curl_init();
+            curl_setopt($curl, CURLOPT_URL, 'https://dev.bilios.com.ua/engine/api/addorder.php');
+            // curl_setopt($curl, CURLOPT_URL, 'https://bilioscrm.com.ua/engine/api/addorder.php');
+            //curl_setopt($curl, CURLOPT_URL, 'https://webhook.site/e1c94e83-f99b-4e03-a626-68a541dd4ef4');
+            curl_setopt($curl, CURLOPT_POST, true);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
+            $out = curl_exec($curl);
+            curl_close($curl);
+            return $order_id;
+        }
     }
 
     private function confirm() {
