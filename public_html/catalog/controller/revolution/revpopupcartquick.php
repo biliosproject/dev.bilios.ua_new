@@ -519,8 +519,8 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
 // параметры запроса
         $data_for_request = array(
             'key'             => 'e644ceaaf3a323cd8fccf2f3c476a945', //Ваш секретный токен
-            //'products'        => $products_for_request,                    // массив с товарами в заказе
-            'products'        => http_build_query($products_list[0],'',', '),                    // массив с товарами в заказе
+            'products'        => $products_for_request,                    // массив с товарами в заказе
+            //'products'        => http_build_query($products_list[0],'',', '),                    // массив с товарами в заказе
             'bayer_name'      => $order_data["firstname"],  // покупатель (Ф.И.О)
             'phone'           => $order_data["telephone"],  // телефон
             'email'           => $order_data["email"], // электронка
@@ -538,8 +538,9 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
 
 // запрос
         $curl = curl_init();
-// curl_setopt($curl, CURLOPT_URL, 'https://bilioscrm.com.ua/engine/api/addorder.php');
-        curl_setopt($curl, CURLOPT_URL, 'https://webhook.site/e1c94e83-f99b-4e03-a626-68a541dd4ef4');
+        curl_setopt($curl, CURLOPT_URL, 'https://dev.bilios.com.ua/engine/api/addorder.php');
+        //curl_setopt($curl, CURLOPT_URL, 'https://bilioscrm.com.ua/engine/api/addorder.php');
+        //curl_setopt($curl, CURLOPT_URL, 'https://webhook.site/e1c94e83-f99b-4e03-a626-68a541dd4ef4');
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
