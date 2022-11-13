@@ -5,3 +5,4 @@
 storage/cache/*
 .idea
 .idea/*
+public_html/image/cache/*
