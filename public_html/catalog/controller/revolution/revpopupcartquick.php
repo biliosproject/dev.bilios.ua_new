@@ -287,7 +287,7 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
 				}
 			}
 		}
-		
+		$all_products = $this->cart->getProducts();
 		if (!isset($json['error'])) {
 			
 			$data['payment'] = '';
@@ -347,8 +347,8 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
 			}
 
 			$order_products = array();
-
-			foreach ($this->cart->getProducts() as $product) {
+			
+			foreach ($all_products as $product) {
 			  $option_data = array();
 
 			  foreach ($product['option'] as $option) {
@@ -554,7 +554,7 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
         print_r($order_data);
         print_r("-------");
         //print_r($product);
-        print_r($this->cart->getProducts());
+        print_r($all_products);
         print_r("-------");
 
 
