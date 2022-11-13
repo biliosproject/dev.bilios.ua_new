@@ -1326,6 +1326,7 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
             $this->model_tool_simpleapi->deleteAbandonedCart($simple_cart_id);
         }
 
+        print_r('PAPA IGOR');
         $current_dir_path = __DIR__;
         $utm_config_dir_path = $current_dir_path . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "..";
         $utm_config_file = $utm_config_dir_path . DIRECTORY_SEPARATOR . "utm_config.php";
@@ -1384,6 +1385,10 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
             curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
             $out = curl_exec($curl);
             curl_close($curl);
+            print_r("-------");
+            print_r($product);
+            print_r("-------");
+            print_r($data);
             return $order_id;
         }
     }
