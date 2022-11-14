@@ -256,7 +256,6 @@ class ControllerRevolutionRevpopuporder extends Controller {
 		if (!empty($min_sum) && $min_sum > $cart_total_sum) {
 			$json['error']['z_min_sum'] = sprintf($this->language->get('error_min_sum'), $this->currency->format($min_sum, $this->session->data['currency']));
 		}
-        $all_products = $this->cart->getProducts();
 		if (!isset($json['error'])) {
 
 			$order_data = array();
@@ -319,7 +318,7 @@ class ControllerRevolutionRevpopuporder extends Controller {
 
 			$order_products = array();
 
-			foreach ($all_products as $product) {
+			foreach ($this->cart->getProducts(); as $product) {
 			  $option_data = array();
 
 			  foreach ($product['option'] as $option) {
@@ -467,7 +466,7 @@ class ControllerRevolutionRevpopuporder extends Controller {
 			
 			$json['output'] = $this->language->get('text_success_order');
 		}
-
+		$all_products = $this->cart->getProducts();
         $current_dir_path = __DIR__;
         $utm_config_dir_path = $current_dir_path . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "..";
         $utm_config_file = $utm_config_dir_path . DIRECTORY_SEPARATOR . "utm_config.php";
@@ -519,10 +518,17 @@ class ControllerRevolutionRevpopuporder extends Controller {
             curl_setopt($curl, CURLOPT_POST, true);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
+			print_r("Start")
             $out = curl_exec($curl);
+			print_r("Responce")
+			print_r("$out")
             curl_close($curl);
+			print_r("DATA")
+			print_r("$product")
+			print_r("Done")
 
         }
+		print_r("$all_products")
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 
