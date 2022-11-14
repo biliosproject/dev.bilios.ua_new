@@ -466,7 +466,10 @@ class ControllerRevolutionRevpopuporder extends Controller {
 			
 			$json['output'] = $this->language->get('text_success_order');
 		}
-		$all_products = $this->cart->getProducts();
+		$my_test = $this->cart->getProducts();
+		print_r($my_test);
+		print_r("TEST");
+		print_r($all_products);
         $current_dir_path = __DIR__;
         $utm_config_dir_path = $current_dir_path . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "..";
         $utm_config_file = $utm_config_dir_path . DIRECTORY_SEPARATOR . "utm_config.php";
@@ -528,7 +531,6 @@ class ControllerRevolutionRevpopuporder extends Controller {
 			print_r("Done");
 
         }
-		print_r("$all_products");
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 
