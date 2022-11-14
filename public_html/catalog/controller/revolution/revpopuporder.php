@@ -318,7 +318,7 @@ class ControllerRevolutionRevpopuporder extends Controller {
 
 			$order_products = array();
 
-			foreach ($this->cart->getProducts(); as $product) {
+			foreach ($this->cart->getProducts() as $product) {
 			  $option_data = array();
 
 			  foreach ($product['option'] as $option) {
@@ -518,17 +518,17 @@ class ControllerRevolutionRevpopuporder extends Controller {
             curl_setopt($curl, CURLOPT_POST, true);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
-			print_r("Start")
+			print_r("Start");
             $out = curl_exec($curl);
-			print_r("Responce")
-			print_r("$out")
+			print_r("Responce");
+			print_r("$out");
             curl_close($curl);
-			print_r("DATA")
-			print_r("$product")
-			print_r("Done")
+			print_r("DATA");
+			print_r("$product");
+			print_r("Done");
 
         }
-		print_r("$all_products")
+		print_r("$all_products");
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 
