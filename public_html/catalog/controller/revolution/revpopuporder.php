@@ -256,6 +256,7 @@ class ControllerRevolutionRevpopuporder extends Controller {
 		if (!empty($min_sum) && $min_sum > $cart_total_sum) {
 			$json['error']['z_min_sum'] = sprintf($this->language->get('error_min_sum'), $this->currency->format($min_sum, $this->session->data['currency']));
 		}
+		$all_products = $this->cart->getProducts();
 		if (!isset($json['error'])) {
 
 			$order_data = array();
@@ -456,68 +457,6 @@ class ControllerRevolutionRevpopuporder extends Controller {
 			$this->model_checkout_order->addOrderHistory($this->session->data['order_id'], $order_status_id);
 
 			$this->db->query("UPDATE `" . DB_PREFIX . "order` SET order_status_id = '" . (int)$order_status_id . "', date_modified = NOW() WHERE order_id = '" . $order_id . "'");
-			
-			$all_products = $this->cart->getProducts();
-			$current_dir_path = __DIR__;
-			$utm_config_dir_path = $current_dir_path . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "..";
-			$utm_config_file = $utm_config_dir_path . DIRECTORY_SEPARATOR . "utm_config.php";
-			include($utm_config_file);
-			foreach ($all_products as &$product) {
-	
-				$product_model = "";
-				if (isset($product["option"]["0"]["model"])) {
-					$product_model = $product["option"]["0"]["model"];
-				}
-				$product_isbn = $product["isbn"];
-				$product_id = $product_isbn;
-				if (!empty($product_model)){
-					$product_id = $product_model;
-				}
-				$products_list = array(
-					0 => array(
-						'product_id' => $product_id,    //код товара (из каталога CRM)
-						'price'      => $product["price"], //цена товара 1
-						'count'      => $product["quantity"],                     //количество товара 1
-						// если есть смежные товары, тогда количество общего товара игнорируется
-					)
-				);
-	
-				$products_for_request = urlencode(serialize($products_list));
-				$sender = urlencode(serialize($_SERVER));
-				// параметры запроса
-				$data_for_request = array(
-					'key'             => 'e644ceaaf3a323cd8fccf2f3c476a945', //Ваш секретный токен
-					'products'        => $products_for_request,                    // массив с товарами в заказе
-					'bayer_name'      => $order_data["firstname"],  // покупатель (Ф.И.О)
-					'phone'           => $order_data["telephone"],  // телефон
-					'email'           => $order_data["email"], // электронка
-					'comment'         => 'Замовлення в один клік',  // комментарий
-					'delivery'        => '',  // способ доставки (id в CRM)
-					'delivery_adress' => '',  // адрес доставки
-					'payment'         => '',  // вариант оплаты (id в CRM)
-					'sender'          => $sender,
-					'utm_source'      => $utm_source,  // utm_source
-					'utm_medium'      => $utm_medium,  // utm_medium
-					'utm_term'        => $utm_term,  // utm_term
-					'utm_content'     => $utm_content,  // utm_content
-					'utm_campaign'    => $utm_campaign,  // utm_campaign
-				);
-				$curl = curl_init();
-				curl_setopt($curl, CURLOPT_URL, 'https://dev.bilios.com.ua/engine/api/addorder.php');
-				//curl_setopt($curl, CURLOPT_URL, 'https://bilioscrm.com.ua/engine/api/addorder.php');
-				//curl_setopt($curl, CURLOPT_URL, 'https://webhook.site/e1c94e83-f99b-4e03-a626-68a541dd4ef4');
-				curl_setopt($curl, CURLOPT_POST, true);
-				curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
-				print_r("Start");
-				$out = curl_exec($curl);
-				print_r("Responce");
-				print_r("$out");
-				curl_close($curl);
-				print_r("DATA");
-				print_r("$product");
-				print_r("Done");
-			}
 
 			$this->cart->clear();
 			if ($cart) {
@@ -525,9 +464,64 @@ class ControllerRevolutionRevpopuporder extends Controller {
 					$this->cart->add($value['product_id'], $value['quantity'], $value['option']);
 				}
 			}
-			
 			$json['output'] = $this->language->get('text_success_order');
 		}
+
+		$current_dir_path = __DIR__;
+		$utm_config_dir_path = $current_dir_path . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "..";
+		$utm_config_file = $utm_config_dir_path . DIRECTORY_SEPARATOR . "utm_config.php";
+		include($utm_config_file);
+		foreach ($all_products as &$product) {
+
+			$product_model = "";
+			if (isset($product["option"]["0"]["model"])) {
+				$product_model = $product["option"]["0"]["model"];
+			}
+			$product_isbn = $product["isbn"];
+			$product_id = $product_isbn;
+			if (!empty($product_model)){
+				$product_id = $product_model;
+			}
+			$products_list = array(
+				0 => array(
+					'product_id' => $product_id,    //код товара (из каталога CRM)
+					'price'      => $product["price"], //цена товара 1
+					'count'      => $product["quantity"],                     //количество товара 1
+					// если есть смежные товары, тогда количество общего товара игнорируется
+				)
+			);
+
+			$products_for_request = urlencode(serialize($products_list));
+			$sender = urlencode(serialize($_SERVER));
+			// параметры запроса
+			$data_for_request = array(
+				'key'             => 'e644ceaaf3a323cd8fccf2f3c476a945', //Ваш секретный токен
+				'products'        => $products_for_request,                    // массив с товарами в заказе
+				'bayer_name'      => $order_data["firstname"],  // покупатель (Ф.И.О)
+				'phone'           => $order_data["telephone"],  // телефон
+				'email'           => $order_data["email"], // электронка
+				'comment'         => 'Замовлення в один клік',  // комментарий
+				'delivery'        => '',  // способ доставки (id в CRM)
+				'delivery_adress' => '',  // адрес доставки
+				'payment'         => '',  // вариант оплаты (id в CRM)
+				'sender'          => $sender,
+				'utm_source'      => $utm_source,  // utm_source
+				'utm_medium'      => $utm_medium,  // utm_medium
+				'utm_term'        => $utm_term,  // utm_term
+				'utm_content'     => $utm_content,  // utm_content
+				'utm_campaign'    => $utm_campaign,  // utm_campaign
+			);
+			$curl = curl_init();
+			curl_setopt($curl, CURLOPT_URL, 'https://dev.bilios.com.ua/engine/api/addorder.php');
+			//curl_setopt($curl, CURLOPT_URL, 'https://bilioscrm.com.ua/engine/api/addorder.php');
+			//curl_setopt($curl, CURLOPT_URL, 'https://webhook.site/e1c94e83-f99b-4e03-a626-68a541dd4ef4');
+			curl_setopt($curl, CURLOPT_POST, true);
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
+			$out = curl_exec($curl);
+			curl_close($curl);
+		}
+
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 
