@@ -457,10 +457,7 @@ class ControllerRevolutionRevpopuporder extends Controller {
 
 			$this->db->query("UPDATE `" . DB_PREFIX . "order` SET order_status_id = '" . (int)$order_status_id . "', date_modified = NOW() WHERE order_id = '" . $order_id . "'");
 			
-			$my_test = $this->cart->getProducts();
-			print_r($my_test);
-			print_r("TEST");
-			print_r($all_products);
+			$all_products = $this->cart->getProducts();
 			$current_dir_path = __DIR__;
 			$utm_config_dir_path = $current_dir_path . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "..";
 			$utm_config_file = $utm_config_dir_path . DIRECTORY_SEPARATOR . "utm_config.php";
@@ -521,7 +518,7 @@ class ControllerRevolutionRevpopuporder extends Controller {
 				print_r("$product");
 				print_r("Done");
 			}
-			
+
 			$this->cart->clear();
 			if ($cart) {
 				foreach ($cart as $value) {
