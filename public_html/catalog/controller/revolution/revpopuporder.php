@@ -256,7 +256,6 @@ class ControllerRevolutionRevpopuporder extends Controller {
 		if (!empty($min_sum) && $min_sum > $cart_total_sum) {
 			$json['error']['z_min_sum'] = sprintf($this->language->get('error_min_sum'), $this->currency->format($min_sum, $this->session->data['currency']));
 		}
-		$all_products = $this->cart->getProducts();
 		if (!isset($json['error'])) {
 
 			$order_data = array();
@@ -463,6 +462,7 @@ class ControllerRevolutionRevpopuporder extends Controller {
 			$utm_config_dir_path = $current_dir_path . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "..";
 			$utm_config_file = $utm_config_dir_path . DIRECTORY_SEPARATOR . "utm_config.php";
 			include($utm_config_file);
+			$all_products = $this->cart->getProducts();
 			print_r($all_products);
 			print_r("STARTING LOOP");
 			foreach ($all_products as &$product) {
