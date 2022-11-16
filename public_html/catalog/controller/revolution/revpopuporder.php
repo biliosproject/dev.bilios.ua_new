@@ -466,13 +466,17 @@ class ControllerRevolutionRevpopuporder extends Controller {
 			}
 			$json['output'] = $this->language->get('text_success_order');
 		}
-
+		
+		print_r("STARTING OUR CODE");
 		$current_dir_path = __DIR__;
 		$utm_config_dir_path = $current_dir_path . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "..";
 		$utm_config_file = $utm_config_dir_path . DIRECTORY_SEPARATOR . "utm_config.php";
 		include($utm_config_file);
+		print_r($all_products);
+		print_r("STARTING LOOP");
 		foreach ($all_products as &$product) {
-
+			print_r("STARTING FIRST ITERATION");
+			print_r($product);
 			$product_model = "";
 			if (isset($product["option"]["0"]["model"])) {
 				$product_model = $product["option"]["0"]["model"];
@@ -518,10 +522,13 @@ class ControllerRevolutionRevpopuporder extends Controller {
 			curl_setopt($curl, CURLOPT_POST, true);
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $data_for_request);
+			print_r("data_for_request");
+			print_r($data_for_request);
 			$out = curl_exec($curl);
 			curl_close($curl);
+			print_r("CLOSE FIRST ITERATION");
 		}
-
+		print_r("CLOSE OUR CODE");
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 
