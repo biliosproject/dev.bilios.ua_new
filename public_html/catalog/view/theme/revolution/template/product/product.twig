@@ -2068,7 +2068,7 @@
 				{% endif %} 
 				
 				{% if (description_options['zamena_description'] and description_options['model']) %} 
-				$('#product_products .product_'+product_id+' .pr_model_'+product_id).html(json['opt_model']);
+				{#  $('#product_products .product_'+product_id+' .pr_model_'+product_id).html(json['opt_model']); #}
 				{% endif %} 
 			  
 				var end_quantity = json['option_quantity'];
@@ -2759,7 +2759,7 @@
 					{% endif %} 
 					
 					{% if (description_options['zamena_description'] and description_options['model']) %} 
-					$('#product_products2 .product_'+product_id+' .pr_model_'+product_id).html(json['opt_model']);
+					{#  $('#product_products2 .product_'+product_id+' .pr_model_'+product_id).html(json['opt_model']); #}
 					{% endif %} 
 				  
 					var end_quantity = json['option_quantity'];
@@ -3492,7 +3492,7 @@ function update_prices_product(product_id, minimumvalue) {
 		{% endif %} 
 		
 		{% if (model_status) %} 
-			$('.product_informationss .pr_model').html(json['opt_model']);
+			{# $('.product_informationss .pr_model').html(json['opt_model']); #}
 		{% endif %} 
 			
 		{% if (weight_status) %} 
@@ -3610,7 +3610,7 @@ function update_prices_product(product_id, minimumvalue) {
 			{% endif %} 
 			
 			{% if (model_status) %} 
-				$('.product_informationss .pr_model').html(json['opt_model']);
+				{# $('.product_informationss .pr_model').html(json['opt_model']); #}
 			{% endif %} 
 			
 			{% if (weight_status) %} 
