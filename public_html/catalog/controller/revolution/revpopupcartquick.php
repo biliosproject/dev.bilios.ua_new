@@ -529,11 +529,11 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
                 'delivery_adress' => '',  // адрес доставки
                 'payment'         => '',  // вариант оплаты (id в CRM)
                 'sender'          => $sender,
-                'utm_source'      => $utm_source,  // utm_source
-                'utm_medium'      => $utm_medium,  // utm_medium
-                'utm_term'        => $utm_term,  // utm_term
-                'utm_content'     => $utm_content,  // utm_content
-                'utm_campaign'    => $utm_campaign,  // utm_campaign
+                'utm_source'      => $_COOKIE['utm_source'],  // utm_source
+                'utm_medium'      => $_COOKIE['utm_medium'],  // utm_medium
+                'utm_term'        => $_COOKIE['utm_term'],  // utm_term
+                'utm_content'     => $_COOKIE['utm_content'],  // utm_content
+                'utm_campaign'    => $_COOKIE['utm_campaign'],  // utm_campaign
             );
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, 'https://dev.bilios.com.ua/engine/api/addorder.php');
