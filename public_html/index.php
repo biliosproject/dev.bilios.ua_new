@@ -12,7 +12,7 @@ if($_GET['utm_source'] || $_GET['utm_medium'] || $_GET['utm_term'] || $_GET['utm
 	setcookie("utm_medium",($_GET['utm_medium']? $_GET['utm_medium']: '' ), time() +$period_cookie);
 	setcookie("utm_term",($_GET['utm_term']? $_GET['utm_term']: '' ), time() +$period_cookie);
 	setcookie("utm_content",($_GET['utm_content']? $_GET['utm_content']: '' ), time() +$period_cookie);
-	setcookie("utm_campaign", ($_GET['utm_campaign']? $_GET['utm_campaign']: null), time() +$period_cookie);
+	if ($_GET['utm_campaign']) setcookie("utm_campaign", $_GET['utm_campaign'], time() +$period_cookie);
 }
 
 // Configuration
