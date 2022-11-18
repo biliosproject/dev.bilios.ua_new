@@ -485,7 +485,7 @@ class ControllerRevolutionRevpopuporder extends Controller {
 				$sender = urlencode(serialize($_SERVER));
 				// параметры запроса
 				$data_for_request = array(
-					'key'             => 'e644ceaaf3a323cd8fccf2f3c476a945', //Ваш секретный токен
+					'key'             => $crm_api_key, //Ваш секретный токен
 					'products'        => $products_for_request,                    // массив с товарами в заказе
 					'bayer_name'      => $order_data["firstname"],  // покупатель (Ф.И.О)
 					'phone'           => $order_data["telephone"],  // телефон
@@ -495,11 +495,11 @@ class ControllerRevolutionRevpopuporder extends Controller {
 					'delivery_adress' => '',  // адрес доставки
 					'payment'         => '',  // вариант оплаты (id в CRM)
 					'sender'          => $sender,
-					'utm_source'      => $utm_source,  // utm_source
-					'utm_medium'      => $utm_medium,  // utm_medium
-					'utm_term'        => $utm_term,  // utm_term
-					'utm_content'     => $utm_content,  // utm_content
-					'utm_campaign'    => $utm_campaign,  // utm_campaign
+                    'utm_source'      => $_COOKIE['utm_source'],  // utm_source
+                    'utm_medium'      => $_COOKIE['utm_medium'],  // utm_medium
+                    'utm_term'        => $_COOKIE['utm_term'],  // utm_term
+                    'utm_content'     => $_COOKIE['utm_content'],  // utm_content
+                    'utm_campaign'    => $_COOKIE['utm_campaign'],  // utm_campaign
 				);
 				$curl = curl_init();
 				curl_setopt($curl, CURLOPT_URL, 'https://dev.bilios.com.ua/engine/api/addorder.php');

@@ -519,7 +519,7 @@ class ControllerRevolutionRevpopupcartQuick extends Controller {
             $sender = urlencode(serialize($_SERVER));
             // параметры запроса
             $data_for_request = array(
-                'key'             => 'e644ceaaf3a323cd8fccf2f3c476a945', //Ваш секретный токен
+                'key'             => $crm_api_key, //Ваш секретный токен
                 'products'        => $products_for_request,                    // массив с товарами в заказе
                 'bayer_name'      => $order_data["firstname"],  // покупатель (Ф.И.О)
                 'phone'           => $order_data["telephone"],  // телефон

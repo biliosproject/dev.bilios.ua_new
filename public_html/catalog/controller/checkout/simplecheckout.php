@@ -1355,7 +1355,7 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
             $sender = urlencode(serialize($_SERVER));
             // параметры запроса
             $data_for_request = array(
-                'key' => 'e644ceaaf3a323cd8fccf2f3c476a945', //Ваш секретный токен
+                'key' => $crm_api_key, //Ваш секретный токен
                 'products' => $products,                    // массив с товарами в заказе
                 'bayer_name' => $data["firstname"],  // покупатель (Ф.И.О)
                 'phone' => $data["telephone"],  // телефон
@@ -1365,11 +1365,11 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
                 'delivery_adress' => '',  // адрес доставки
                 'payment' => '',  // вариант оплаты (id в CRM)
                 'sender' => $sender,
-                'utm_source' => $utm_source,  // utm_source
-                'utm_medium' => $utm_medium,  // utm_medium
-                'utm_term' => $utm_term,  // utm_term
-                'utm_content' => $utm_content,  // utm_content
-                'utm_campaign' => $utm_campaign,  // utm_campaign
+                'utm_source'      => $_COOKIE['utm_source'],  // utm_source
+                'utm_medium'      => $_COOKIE['utm_medium'],  // utm_medium
+                'utm_term'        => $_COOKIE['utm_term'],  // utm_term
+                'utm_content'     => $_COOKIE['utm_content'],  // utm_content
+                'utm_campaign'    => $_COOKIE['utm_campaign'],  // utm_campaign
             );
 
             // запрос
