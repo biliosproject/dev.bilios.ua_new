@@ -2068,7 +2068,7 @@
 				{% endif %} 
 				
 				{% if (description_options['zamena_description'] and description_options['model']) %} 
-				{#  $('#product_products .product_'+product_id+' .pr_model_'+product_id).html(json['opt_model']); #}
+				$('#product_products .product_'+product_id+' .pr_model_'+product_id).html(json['opt_model']);
 				{% endif %} 
 			  
 				var end_quantity = json['option_quantity'];
