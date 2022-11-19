@@ -3492,7 +3492,7 @@ function update_prices_product(product_id, minimumvalue) {
 		{% endif %} 
 		
 		{% if (model_status) %} 
-			{# $('.product_informationss .pr_model').html(json['opt_model']); #}
+			$('.product_informationss .pr_model').html(json['opt_model']);
 		{% endif %} 
 			
 		{% if (weight_status) %} 
