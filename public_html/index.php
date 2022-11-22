@@ -8,10 +8,26 @@ error_reporting(0);
 $period_cookie = 2592000; // 30 дней (2592000 секунд)
 
 if($_GET['utm_source'] || $_GET['utm_medium'] || $_GET['utm_term'] || $_GET['utm_content'] || $_GET['utm_campaign']){
-	setcookie("utm_source",($_GET['utm_source']? $_GET['utm_source']: '' ), time() +$period_cookie);
-	setcookie("utm_medium",($_GET['utm_medium']? $_GET['utm_medium']: '' ), time() +$period_cookie);
-	setcookie("utm_term",($_GET['utm_term']? $_GET['utm_term']: '' ), time() +$period_cookie);
-	setcookie("utm_content",($_GET['utm_content']? $_GET['utm_content']: '' ), time() +$period_cookie);
+	if ($_GET['utm_source']) { 
+		setcookie("utm_source", $_GET['utm_source'], time() +$period_cookie);
+	} else {
+		setcookie("utm_source", "", time()-3600);
+	}
+	if ($_GET['utm_medium']) { 
+		setcookie("utm_medium", $_GET['utm_medium'], time() +$period_cookie);
+	} else {
+		setcookie("utm_medium", "", time()-3600);
+	}
+	if ($_GET['utm_term']) { 
+		setcookie("utm_term", $_GET['utm_camputm_termaign'], time() +$period_cookie);
+	} else {
+		setcookie("utm_term", "", time()-3600);
+	}
+	if ($_GET['utm_content']) { 
+		setcookie("utm_content", $_GET['utm_content'], time() +$period_cookie);
+	} else {
+		setcookie("utm_content", "", time()-3600);
+	}
 	if ($_GET['utm_campaign']) { 
 		setcookie("utm_campaign", $_GET['utm_campaign'], time() +$period_cookie);
 	} else {
