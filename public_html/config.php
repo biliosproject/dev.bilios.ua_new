@@ -1,15 +1,15 @@
 <?php
 // HTTP
-define('HTTP_SERVER', 'https://dev.bilios.ua/');
+define('HTTP_SERVER', 'https://bilios.ua/');
 
 // HTTPS
-define('HTTPS_SERVER', 'https://dev.bilios.ua/');
+define('HTTPS_SERVER', 'https://bilios.ua/');
 
 // DIR
-define('DIR_APPLICATION', '/home/xandr4ik/web/dev.bilios.ua/public_html/catalog/');
-define('DIR_SYSTEM', '/home/xandr4ik/web/dev.bilios.ua/public_html/system/');
-define('DIR_IMAGE', '/home/xandr4ik/web/dev.bilios.ua/public_html/image/');
-define('DIR_STORAGE', '/home/xandr4ik/web/dev.bilios.ua/storage/');
+define('DIR_APPLICATION', '/home/xandr4ik/web/bilios.ua/public_html/catalog/');
+define('DIR_SYSTEM', '/home/xandr4ik/web/bilios.ua/public_html/system/');
+define('DIR_IMAGE', '/home/xandr4ik/web/bilios.ua/public_html/image/');
+define('DIR_STORAGE', '/home/xandr4ik/web/bilios.ua/storage/');
 define('DIR_LANGUAGE', DIR_APPLICATION . 'language/');
 define('DIR_TEMPLATE', DIR_APPLICATION . 'view/theme/');
 define('DIR_CONFIG', DIR_SYSTEM . 'config/');
@@ -23,9 +23,8 @@ define('DIR_UPLOAD', DIR_STORAGE . 'upload/');
 // DB
 define('DB_DRIVER', 'mysqli');
 define('DB_HOSTNAME', 'localhost');
-define('DB_USERNAME', 'xandr4ik_dev');
-define('DB_PASSWORD', 'Nx0MZPAusmUvSLZT');
-define('DB_DATABASE', 'xandr4ik_dev');
+define('DB_USERNAME', 'xandr4ik_bilios_ua');
+define('DB_PASSWORD', 'Iyv0W4Ix2deZwjnG');
+define('DB_DATABASE', 'xandr4ik_bilios_ua');
 define('DB_PORT', '3306');
 define('DB_PREFIX', 'oc_');
-

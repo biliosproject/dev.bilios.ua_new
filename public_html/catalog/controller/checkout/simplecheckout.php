@@ -1324,9 +1324,8 @@ class ControllerCheckoutSimpleCheckout extends SimpleController {
             $this->load->model('tool/simpleapi');
             $this->model_tool_simpleapi->deleteAbandonedCart($simple_cart_id);
         }        
-    
-	print_r('PAPA IGOR');
-	return $order_id;
+
+        return $order_id;
     }
 
     private function confirm() {

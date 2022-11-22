@@ -168,6 +168,6 @@ class __TwigTemplate_24fbf4be18cd663b7172ac8e0a0bb40253b982fdbd69a608eff7be692ca
 
     public function getSourceContext()
     {
-        return new Source("", "revolution/template/common/simple_header.twig", "/home/xandr4ik/web/dev.bilios.ua/public_html/catalog/view/theme/revolution/template/common/simple_header.twig");
+        return new Source("", "revolution/template/common/simple_header.twig", "/home/ey470188/bilios.ua/www/catalog/view/theme/revolution/template/common/simple_header.twig");
     }
 }
